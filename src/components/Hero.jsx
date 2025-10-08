@@ -13,9 +13,10 @@ const Hero = () => {
   useEffect(() => {
     const typed = new Typed(typedEl.current, {
       strings: [
-        "Web Developer",
-        "UI/UX Designer",
-        "Software Quality Assurance",
+        "Afsal Maulana",
+        "a Web Developer",
+        "a UI/UX Enthusiast",
+        "Quality Assurance",
       ],
       typeSpeed: 70,
       backSpeed: 50,
@@ -215,12 +216,14 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-28 md:mt-5 lg:mt-5"
         >
-          <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
-            Hallo, Saya <span className="text-[#2563EB]" ref={typedEl}></span>
+          <h1
+            className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}
+          >
+            Hallo, I'm <span className="text-[#2563EB]" ref={typedEl}></span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Sebagai seorang Web Developer dengan latar belakang Sistem Informasi, <br />
-            saya berfokus pada pembuatan solusi web yang modern dan profesional
+            As a Web Developer with a degree in Information Systems, <br />
+            I specialize in creating modern and professional web solutions
           </p>
         </motion.div>
       </div>
