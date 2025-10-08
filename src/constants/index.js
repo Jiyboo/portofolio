@@ -1,10 +1,10 @@
 
 import {
   logo,
-  backend,
-  creator,
-  mobile,
-  web,
+  networking,
+  ui,
+  qa,
+  fullstack,
   github,
   link,
   menu,
@@ -61,19 +61,19 @@ export const navLinks = [
 const services = [
   {
     title: "Full-Stack Developer",
-    icon: web,
+    icon: fullstack,
   },
   {
-    title: "Frontend Developer",
-    icon: mobile,
+    title: "Quality Assurance",
+    icon: qa,
   },
   {
-    title: "Backend Developer",
-    icon: backend,
+    title: "Networking",
+    icon: networking,
   },
   {
     title: "Ui UX Designer",
-    icon: creator,
+    icon: ui,
   },
 ];
 
@@ -151,7 +151,7 @@ const experiences = [
     iconBg: "#383E56",
     date: "Nov 2024 - Jan 2025",
     points: [
-      "Design, develop, and maintain a public complaint management website using pure PHP, ensuring secure data handling and a user-friendly interface for citizens to submit and track complaints.",
+      "Design, develop, and maintain a public complaint management fullstacksite using pure PHP, ensuring secure data handling and a user-friendly interface for citizens to submit and track complaints.",
       "Build and manage a student information management system using CodeIgniter 4, including modules for student data processing, reporting, and administrative workflows.",
       "Develop both front-end and back-end components, integrate databases, and ensure seamless communication between system modules.",
       "Implement authentication, authorization, and data validation to maintain security and integrity of user information.",
@@ -218,9 +218,9 @@ description:
     source_code_link: "https://drive.google.com/file/d/15D5xXGGSoORDuph_9ofpCwZ7AVEMWjRM/view?usp=sharing",
   },
     {
-name: "Student Information Management System (Web-based)",
+name: "Student Information Management System (fullstack-based)",
 description:
-  "A web-based student management platform for processing internship reports, supporting multi-user access and academic supervision workflows.",
+  "A fullstack-based student management platform for processing internship reports, supporting multi-user access and academic supervision workflows.",
   tags: [
       {
         name: "CI-4",
@@ -247,7 +247,7 @@ description:
   {
  name: "Public Complaint System",
   description:
-    "A web-based platform that allows citizens to submit and track complaints, with multi-user access for administrators and officials.",
+    "A fullstack-based platform that allows citizens to submit and track complaints, with multi-user access for administrators and officials.",
      tags: [
       {
         name: "PHP",

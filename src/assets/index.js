@@ -1,8 +1,8 @@
 import logo from "./logo.png";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
+import networking from "./networking.png";
+import ui from "./ui.png";
+import qa from "./qa.png";
+import fullstack from "./fullstack.png";
 import github from "./github.png";
 import link from "./link.png";
 import menu from "./menu.svg";
@@ -32,10 +32,10 @@ import threejs from "./tech/threejs.svg";
 
 export {
   logo,
-  backend,
-  creator,
-  mobile,
-  web,
+  networking,
+  ui,
+  qa,
+  fullstack,
   smaw,
   link,
   github,
