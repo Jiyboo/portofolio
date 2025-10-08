@@ -69,6 +69,17 @@ if (position === "left") {
             {project.description}
           </p>
         </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+    {project.tags.map((tag, index) => (
+      <p
+        key={`${project.name}-${tag.name}-${index}`}
+        className={`text-[14px] ${tag.color}`}
+      >
+        #{tag.name}
+      </p>
+    ))}
+
+</div>
       </motion.div>
     </Tilt>
   );
