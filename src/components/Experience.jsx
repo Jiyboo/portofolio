@@ -132,18 +132,18 @@ const Experience = () => {
         </h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-              isOpen={openCards.includes(index)}
-              onToggle={() => handleToggle(index)}
-            />
-          ))}
-        </VerticalTimeline>
-      </div>
+<div className="mt-20 flex flex-col">
+  <VerticalTimeline lineColor="#2563EB">
+    {experiences.map((experience, index) => (
+      <ExperienceCard
+        key={`experience-${index}`}
+        experience={experience}
+        isOpen={openCards.includes(index)}
+        onToggle={() => handleToggle(index)}
+      />
+    ))}
+  </VerticalTimeline>
+</div>
     </>
   );
 };
