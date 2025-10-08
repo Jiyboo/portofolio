@@ -5,7 +5,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Computers = () => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  const computer = useGLTF("/desktop_pc/scene.gltf");
 
   return (
     <mesh>
@@ -20,12 +20,11 @@ const Computers = () => {
       />
       <pointLight intensity={1} />
       <primitive
-  object={computer.scene}
-  scale={0.75} 
-  position={[0, -5, -2]}  // Y lebih kecil = turun
-  rotation={[-0.01, -0.2, -0.1]}
-/>
-
+        object={computer.scene}
+        scale={0.75}
+        position={[0, -5, -2]}
+        rotation={[-0.01, -0.2, -0.1]}
+      />
     </mesh>
   );
 };
@@ -35,7 +34,7 @@ const ComputersCanvas = () => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 500px)");
-    
+
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
@@ -48,7 +47,7 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    !isMobile && ( // Hide on mobile screens
+    !isMobile && (
       <Canvas
         frameloop="demand"
         shadows
@@ -69,5 +68,7 @@ const ComputersCanvas = () => {
     )
   );
 };
+
+useGLTF.preload("/desktop_pc/scene.gltf");
 
 export default ComputersCanvas;

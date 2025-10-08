@@ -1,30 +1,174 @@
-import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Typed from "typed.js";
-
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
   const typedEl = useRef(null);
+  const heroRef = useRef(null);
+  const canvasRef = useRef(null);
 
+  // --- Efek teks ketik otomatis ---
   useEffect(() => {
     const typed = new Typed(typedEl.current, {
-      strings: ["Afsal Maulana", "a Web Developer", "a UI/UX Enthusiast", "Quality Assurance"],
+      strings: [
+        "Web Developer",
+        "UI/UX Designer",
+        "Software Quality Assurance",
+      ],
       typeSpeed: 70,
       backSpeed: 50,
       backDelay: 1500,
       loop: true,
     });
+    return () => typed.destroy();
+  }, []);
+
+  // --- Efek parallax desktop + mobile gyroscope ---
+  useEffect(() => {
+    const element = heroRef.current;
+    if (!element) return;
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    const handleMouseMove = (e) => {
+      const moveX = (e.clientX / window.innerWidth - 0.5) * 30;
+      const moveY = (e.clientY / window.innerHeight - 0.5) * 30;
+      element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    };
+
+    const handleOrientation = (event) => {
+      const moveX = (event.gamma / 45) * 20;
+      const moveY = (event.beta / 45) * 20;
+      element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    };
+
+    if (isMobile && typeof window.DeviceOrientationEvent !== "undefined") {
+      if (typeof window.DeviceOrientationEvent.requestPermission === "function") {
+        window.DeviceOrientationEvent.requestPermission()
+          .then((res) => {
+            if (res === "granted") {
+              window.addEventListener("deviceorientation", handleOrientation);
+            }
+          })
+          .catch(console.error);
+      } else {
+        window.addEventListener("deviceorientation", handleOrientation);
+      }
+    } else {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     return () => {
-      typed.destroy();
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("deviceorientation", handleOrientation);
     };
   }, []);
 
+  // --- Efek grid glowing + glitch layar rusak ---
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+    const size = 60;
+
+    const cols = Math.ceil(width / size);
+    const rows = Math.ceil(height / size);
+    const grid = [];
+
+    // Inisialisasi grid
+    for (let x = 0; x < cols; x++) {
+      for (let y = 0; y < rows; y++) {
+        grid.push({
+          x: x * size,
+          y: y * size,
+          alpha: Math.random() * 0.2,
+          targetAlpha: 0,
+        });
+      }
+    }
+
+    const randomizeTargets = () => {
+      grid.forEach((cell) => {
+        cell.targetAlpha = Math.random() < 0.05 ? 0.8 : 0.05;
+      });
+    };
+
+    // --- Efek glitch futuristik ---
+    let glitchActive = false;
+    let glitchTime = 0;
+
+    const drawGlitch = () => {
+      // distorsi warna & potongan geser
+      const sliceCount = 4 + Math.floor(Math.random() * 4);
+      for (let i = 0; i < sliceCount; i++) {
+        const sliceHeight = 20 + Math.random() * 100;
+        const y = Math.random() * height;
+        const offset = (Math.random() - 0.5) * 60;
+
+        const imgData = ctx.getImageData(0, y, width, sliceHeight);
+        ctx.putImageData(imgData, offset, y);
+      }
+
+      // RGB shift efek (layer berwarna sedikit bergeser)
+      ctx.globalCompositeOperation = "screen";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "source-over";
+    };
+
+    const draw = (time) => {
+      ctx.clearRect(0, 0, width, height);
+      grid.forEach((cell) => {
+        cell.alpha += (cell.targetAlpha - cell.alpha) * 0.1;
+        ctx.fillStyle = `rgba(37,99,235,${cell.alpha})`;
+        ctx.fillRect(cell.x, cell.y, size, size);
+      });
+
+      // Jalankan glitch sebentar
+      if (glitchActive) {
+        drawGlitch();
+        if (time - glitchTime > 300 + Math.random() * 200) {
+          glitchActive = false;
+        }
+      } else if (Math.random() < 0.003) {
+        glitchActive = true;
+        glitchTime = time;
+      }
+    };
+
+    let lastChange = 0;
+    const animate = (time) => {
+      if (time - lastChange > 300) {
+        randomizeTargets();
+        lastChange = time;
+      }
+      draw(time);
+      requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
+
+    window.addEventListener("resize", () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+  }, []);
+
   return (
-    <section className="relative w-full h-screen mx-auto overflow-hidden hero">
-      {}
+    <section
+      ref={heroRef}
+      className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]"
+    >
+      {/* 🔹 Lapisan 1: Canvas grid + glitch */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+      ></canvas>
+
+      {/* 🔹 Lapisan 2: Gelombang biru */}
       <motion.svg
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -33,7 +177,6 @@ const Hero = () => {
         viewBox="0 0 1800 900"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
       >
         <defs>
           <linearGradient id="gradBlue" x1="0" x2="1">
@@ -42,13 +185,7 @@ const Hero = () => {
           </linearGradient>
         </defs>
 
-        <g
-          fill="none"
-          stroke="url(#gradBlue)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
+        <g fill="none" stroke="url(#gradBlue)" strokeWidth="2">
           <path d="M-200 560 C200 320 440 520 800 520 C1160 520 1400 320 1800 480" strokeOpacity="0.95" />
           <path d="M-200 590 C200 350 440 550 800 550 C1160 550 1400 350 1800 510" strokeOpacity="0.85" />
           <path d="M-200 620 C200 380 440 580 800 580 C1160 580 1400 380 1800 540" strokeOpacity="0.75" />
@@ -58,11 +195,10 @@ const Hero = () => {
         </g>
       </motion.svg>
 
-      {}
+      {/* 🔹 Konten Hero */}
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        {/* Dot & Line */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -73,7 +209,6 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </motion.div>
 
-        {}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,21 +216,19 @@ const Hero = () => {
           className="mt-28 md:mt-5 lg:mt-5"
         >
           <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
-  Hallo, Saya <span className="text-[#2563EB]" ref={typedEl}></span>
-</h1>
-
+            Hallo, Saya <span className="text-[#2563EB]" ref={typedEl}></span>
+          </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-  Sebagai seorang Web Developer dengan latar belakang pendidikan Sistem Informasi, <br />
-  saya berfokus pada pengembangan solusi web yang inovatif, modern, dan profesional.
-</p>
-
-
+            Sebagai seorang Web Developer dengan latar belakang Sistem Informasi, <br />
+            saya berfokus pada pembuatan solusi web yang modern dan profesional
+          </p>
         </motion.div>
       </div>
 
+      {/* 🔹 Lapisan 4: 3D Canvas */}
       <ComputersCanvas />
 
-      {}
+      {/* 🔹 Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -105,14 +238,8 @@ const Hero = () => {
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
+              animate={{ y: [0, 24, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
               className="w-3 h-3 rounded-full bg-secondary mb-1"
             />
           </div>

@@ -219,9 +219,37 @@ body::-webkit-scrollbar {
 
 
 .hero {
-  background: radial-gradient(circle at 50% 32%, #072047 0%, #031327 36%, #00050a 100%);
-  color: #e8f5ff;
+  position: relative;
+  background: radial-gradient(circle at 60% 40%, #050b18, #010409 80%);
+  overflow: hidden;
 }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridGlow 5s infinite steps(10);
+  mix-blend-mode: screen;
+}
+
+@keyframes gridGlow {
+  0%, 100% {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  }
+  50% {
+    background-image:
+      linear-gradient(rgba(37,99,235,0.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,99,235,0.2) 1px, transparent 1px);
+  }
+}
+
+
 
 @keyframes float-slow {
   0%   { transform: translateX(-10%) translateY(-2px); }
