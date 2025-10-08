@@ -1,145 +1,170 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Tilt } from "react-tilt";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { motion, AnimatePresence } from "framer-motion";
+import { github, link } from "../assets";
 import { styles } from "../styles";
-import { github } from "../assets";
-import { link } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+const ProjectCard = ({ project, position }) => {
+  const baseStyle =
+    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px]"; // jarak rapat
 
-const ProjectCard = ({
-  index,
-  name,
-  description,
-  tags,
-  image,
-  source_code_link,
-}) => {
-  const cardRef = useRef(null);
+  let xPos = 0;
+  let scale = 0.85;
+  let opacity = 0.4;
+  let zIndex = 5;
 
-  useEffect(() => {
-    const el = cardRef.current;
-
-    // ScrollTrigger for animating project cards with stagger
-    gsap.fromTo(
-      el,
-      {
-        opacity: 0,
-        y: 100, // Start off-screen
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scrollTrigger: {
-          trigger: el,
-          start: "top bottom",  // Trigger when the top of the element hits the bottom of the viewport
-          end: "top center",    // End when the top reaches the center of the viewport
-          scrub: true,          // Smoothly sync scroll and animation
-          markers: false,       // Set to `true` to see debug markers
-        },
-      }
-    );
-  }, []);
-
+if (position === "left") {
+  xPos = -200;
+  opacity = 0.7;
+  scale = 0.9;
+} else if (position === "center") {
+  xPos = 0;
+  scale = 1.05;
+  opacity = 1;
+  zIndex = 20;
+} else if (position === "right") {
+  xPos = 200;
+  opacity = 0.7;
+  scale = 0.9;
+}
   return (
-    <div ref={cardRef}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+    <Tilt options={{ max: 25, scale: 1, speed: 400 }}>
+      <motion.div
+        key={project.name}
+        layout
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ x: xPos, scale, opacity, zIndex }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className={`${baseStyle}`}
+        style={{ zIndex }}
       >
-        <div className="relative w-full h-[230px]">
-  <img
-    src={image}
-    alt="project_image"
-    className="w-full h-full object-cover object-left rounded-2xl"
-  />
-
-  <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-    <div
-      onClick={() => window.open(source_code_link, "_blank")}
-      className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-    >
-      <img
-        src={source_code_link.includes("github.com") ? github : link}
-        alt="source code"
-        className="w-1/2 h-1/2 object-contain"
-      />
-    </div>
-  </div>
-</div>
+        <div className="relative w-full h-[200px] sm:h-[230px]">
+          <img
+            src={project.image}
+            alt={project.name}
+            className="w-full h-full object-cover rounded-2xl"
+          />
+          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+            <div
+              onClick={() => window.open(project.source_code_link, "_blank")}
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+            >
+              <img
+                src={
+                  project.source_code_link.includes("github.com") ? github : link
+                }
+                alt="source code"
+                className="w-1/2 h-1/2 object-contain"
+              />
+            </div>
+          </div>
+        </div>
 
         <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+          <h3 className="text-white font-bold text-[18px]">{project.name}</h3>
+          <p className="mt-2 text-secondary text-[14px]">
+            {project.description}
+          </p>
         </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
-        </div>
-      </Tilt>
-    </div>
+      </motion.div>
+    </Tilt>
   );
 };
 
 const Works = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [progress, setProgress] = useState(100);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setProgress(100); 
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    setProgress(100); 
+  };
+
   useEffect(() => {
-    // Stagger effect for project cards
-    gsap.fromTo(
-      ".project-card", // Select all project cards
-      {
-        opacity: 0,
-        y: 100,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1, // Stagger delay of 0.3 seconds between each card
-        scrollTrigger: {
-          trigger: ".works-container",
-          start: "top bottom",  // Trigger when the top of the container reaches the bottom
-          end: "top center",
-          scrub: true,
-          markers: false, // Set to true to see debug markers
-        },
-      }
-    );
+    const timer = setInterval(() => {
+      setProgress((p) => {
+        if (p <= 0) {
+          nextSlide();
+          return 100;
+        }
+        return p - 2; 
+      });
+    }, 100);
+    return () => clearInterval(timer);
   }, []);
+
+  const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
+  const nextIndex = (currentIndex + 1) % projects.length;
 
   return (
     <>
       <div>
-        <p className={`${styles.sectionSubText}`}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
+        <p className={styles.sectionSubText}>My Work</p>
+        <h2 className={styles.sectionHeadText}>Projects.</h2>
       </div>
-
       <div className="w-full flex">
+              <div className="w-full flex">
         <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
          During my studies and internship, I have worked on several projects, including an emotion detection system, a student management system, a student complaint tracking system, and a warehouse management application. These experiences allowed me to apply my technical skills, collaborate effectively in team settings, and gain hands-on experience in software development, system analysis, and problem-solving in real-world scenarios.
         </p>
       </div>
+      </div>
 
-      <div className="works-container mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
-        {projects.map((project, index) => (
-          <div key={`project-${index}`} className="project-card">
-            <ProjectCard index={index} {...project} />
-          </div>
-        ))}
+      <div className="w-full flex justify-center items-center mt-10 relative">
+        {}
+        <button
+          onClick={prevSlide}
+          className="absolute left-0 text-3xl px-4 py-2 text-blue-400 hover:text-blue-600 z-30"
+        >
+          ❮
+        </button>
+
+        {}
+        <div className="flex items-center justify-center overflow-hidden w-full 0 relative">
+          <AnimatePresence mode="popLayout">
+            <ProjectCard
+              key={projects[prevIndex].name}
+              project={projects[prevIndex]}
+              position="left"
+            />
+            <ProjectCard
+              key={projects[currentIndex].name}
+              project={projects[currentIndex]}
+              position="center"
+            />
+            <ProjectCard
+              key={projects[nextIndex].name}
+              project={projects[nextIndex]}
+              position="right"
+            />
+          </AnimatePresence>
+        </div>
+
+        {}
+        <button
+          onClick={nextSlide}
+          className="absolute right-0 text-3xl px-4 py-2 text-blue-400 hover:text-blue-600 z-30"
+        >
+          ❯
+        </button>
+      </div>
+
+      {}
+      <div className="w-full flex justify-center mt-6">
+        <div className="w-48 h-2 bg-gray-700 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-blue-400 transition-all duration-100 linear"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
       </div>
     </>
   );
