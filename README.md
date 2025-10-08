@@ -60,7 +60,7 @@
 
 ##### 
 
-##### !\[Portfolio Screenshot](preview.png)
+##### !\[Portfolio Screenshot](./preview.png)
 
 ##### \*(Replace with your own screenshot of the project)\*
 
