@@ -56,18 +56,6 @@
 
 ##### 
 
-# \## 📸 Preview
-
-##### 
-
-##### !\[Portfolio Screenshot](https://raw.githubusercontent.com/Jiyboo/portofolio/main/preview.png)
-
-##### \*(Replace with your own screenshot of the project)\*
-
-##### 
-
-##### ---
-
 ##### 
 
 # \## ⚙️ Installation \& Setup
