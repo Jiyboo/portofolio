@@ -62,20 +62,29 @@ const services = [
   {
     title: "Full-Stack Developer",
     icon: fullstack,
+    description:
+      "Designing and developing end-to-end web applications, from frontend to backend, including database integration and deployment.",
   },
   {
     title: "Quality Assurance",
     icon: qa,
+    description:
+      "Ensuring software quality through comprehensive manual and automated testing to deliver reliable, bug-free solutions.",
   },
   {
     title: "Networking",
     icon: networking,
+    description:
+      "Proficient in computer networking concepts, device configuration, and troubleshooting to maintain secure and stable connectivity.",
   },
   {
-    title: "Ui UX Designer",
+    title: "UI/UX Designer",
     icon: ui,
+    description:
+      "Creating visually engaging and user-friendly interfaces with a strong focus on usability and seamless user experience.",
   },
 ];
+
 
 const technologies = [
   {

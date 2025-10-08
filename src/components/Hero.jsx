@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     const typed = new Typed(typedEl.current, {
-      strings: ["Afsal Maulana", "a Web Developer", "a UI/UX Enthusiast", "QA"],
+      strings: ["Afsal Maulana", "a Web Developer", "a UI/UX Enthusiast", "Quality Assurance"],
       typeSpeed: 70,
       backSpeed: 50,
       backDelay: 1500,
@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-screen mx-auto overflow-hidden hero">
-      {/* ---------- SVG Wave Background ---------- */}
+      {}
       <motion.svg
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ const Hero = () => {
         </g>
       </motion.svg>
 
-      {/* ---------- Hero Content ---------- */}
+      {}
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -73,16 +73,17 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </motion.div>
 
-        {/* Text */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-28 md:mt-5 lg:mt-5"
         >
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#2563EB]" ref={typedEl}></span>
-          </h1>
+          <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
+  Hallo, I'm <span className="text-[#2563EB]" ref={typedEl}></span>
+</h1>
+
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             As a Web Developer with a degree in Information Systems, <br />
             I specialize in creating modern and professional web solutions
@@ -92,7 +93,7 @@ const Hero = () => {
 
       <ComputersCanvas />
 
-      {/* Scroll indicator */}
+      {}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
