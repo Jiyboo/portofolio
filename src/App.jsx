@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { About, Resume, Experience, Hero, Navbar, Tech, Works, StarsCanvas, CVCode } from "./components";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -35,8 +35,8 @@ const App = () => {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="relative z-0">
-          <Contact />
+        <section id="resume" className="relative z-0">
+          <Resume />
           <StarsCanvas />
           <Footer />
         </section>

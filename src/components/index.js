@@ -5,7 +5,8 @@ import About from "./About";
 import Tech from "./Tech";
 import Experience from "./Experience";
 import Works from "./Works";
-import Contact from "./Contact";
+import Resume from "./Resume";
+import CVCode from "./CVCode";
 import CanvasLoader from "./Loader";
 
 
@@ -16,7 +17,8 @@ export {
   Tech,
   Experience,
   Works,
-  Contact,
+  CVCode,
+  Resume,
   CanvasLoader,
   EarthCanvas, 
   ComputersCanvas, 
