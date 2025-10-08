@@ -24,17 +24,17 @@
 }
 
 .black-gradient {
-  background: #000000; 
+  background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
     #434343,
     #000000
-  ); 
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
     #434343,
     #000000
-  ); 
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .violet-gradient {
@@ -54,7 +54,7 @@
 }
 
 .orange-text-gradient {
-  background: #f12711; 
+  background: #f12711; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
     #f12711,
@@ -64,13 +64,13 @@
     to top,
     #f12711,
     #f5af19
-  ); 
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .green-text-gradient {
-  background: #11998e; 
+  background: #11998e; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
     #11998e,
@@ -80,13 +80,14 @@
     to top,
     #11998e,
     #38ef7d
-  ); 
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .blue-text-gradient {
-  background: #56ccf2; 
+  /* background: -webkit-linear-gradient(#eee, #333); */
+  background: #56ccf2; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
     #2f80ed,
@@ -96,28 +97,28 @@
     to top,
     #2f80ed,
     #56ccf2
-  ); 
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .pink-text-gradient {
-  background: #ec008c; 
+  background: #ec008c; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
     #ec008c,
     #fc6767
-  ); 
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
     #ec008c,
     #fc6767
-  ); 
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-
+/* canvas- styles */
 .canvas-loader {
   font-size: 10px;
   width: 1em;
@@ -223,6 +224,7 @@ body::-webkit-scrollbar {
   color: #e8f5ff;
 }
 
+/* Floating anim */
 @keyframes float-slow {
   0%   { transform: translateX(-10%) translateY(-2px); }
   50%  { transform: translateX(-10%) translateY(6px); }
@@ -233,6 +235,7 @@ body::-webkit-scrollbar {
   transform-origin: center;
 }
 
+/* Wave stroke animation - infinite seamless */
 @keyframes wave-line {
   0%   { stroke-dashoffset: 0; }
   100% { stroke-dashoffset: -4000; } 
@@ -245,7 +248,7 @@ body::-webkit-scrollbar {
 }
 
 
-
+/* Delay per path biar beda ritme */
 .hero-wave path:nth-child(2) { animation-delay: 3s; }
 .hero-wave path:nth-child(3) { animation-delay: 6s; }
 .hero-wave path:nth-child(4) { animation-delay: 9s; }
@@ -304,6 +307,7 @@ body::-webkit-scrollbar {
 .card-wrapper:hover .shadow-card {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+/* Umum untuk semua flag */
 .flag {
   width: 32px;
   height: 20px;
@@ -327,15 +331,17 @@ body::-webkit-scrollbar {
   border: 2px solid white;
 }
 
+/* 🇮🇩 Indonesia */
 .flag-id {
   background: linear-gradient(to bottom, #ff0000 50%, #ffffff 50%);
 }
 
+/* 🇬🇧 Inggris — desain Union Jack pakai CSS */
 .flag-en {
-  background-color: #00247d;
+  background-color: #00247d; /* Biru tua dasar */
 }
 
-
+/* Garis putih salib */
 .flag-en::before,
 .flag-en::after {
   content: "";
@@ -343,6 +349,7 @@ body::-webkit-scrollbar {
   background-color: #ffffff;
 }
 
+/* Salib putih horizontal */
 .flag-en::before {
   top: 50%;
   left: 0;
@@ -351,6 +358,7 @@ body::-webkit-scrollbar {
   transform: translateY(-50%);
 }
 
+/* Salib putih vertikal */
 .flag-en::after {
   left: 50%;
   top: 0;
@@ -359,6 +367,7 @@ body::-webkit-scrollbar {
   transform: translateX(-50%);
 }
 
+/* Tambahkan salib merah di atas putih */
 .flag-en .cross-red-horizontal,
 .flag-en .cross-red-vertical {
   position: absolute;
@@ -366,6 +375,7 @@ body::-webkit-scrollbar {
   z-index: 2;
 }
 
+/* Garis merah horizontal di tengah */
 .flag-en .cross-red-horizontal {
   top: 50%;
   left: 0;
@@ -374,6 +384,7 @@ body::-webkit-scrollbar {
   transform: translateY(-50%);
 }
 
+/* Garis merah vertikal di tengah */
 .flag-en .cross-red-vertical {
   left: 50%;
   top: 0;

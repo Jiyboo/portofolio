@@ -8,18 +8,15 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [language, setLanguage] = useState("en"); 
-
+  const [language, setLanguage] = useState("en");
   const navigate = useNavigate();
   const location = useLocation();
-
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -34,7 +31,6 @@ const Navbar = () => {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
-  
   useEffect(() => {
     if (location.pathname.startsWith("/id")) {
       setLanguage("id");
@@ -43,7 +39,6 @@ const Navbar = () => {
     }
   }, [location.pathname]);
 
- 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
     if (lang === "id") {
@@ -60,9 +55,9 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        {}
+        {/* Logo */}
         <Link
-          to="/"
+          to="/id"
           className="flex items-center gap-2"
           onClick={() => {
             setActive("");
@@ -103,7 +98,7 @@ const Navbar = () => {
 
           {}
           <div className="flex items-center gap-3 ml-6">
-            {/* Bendera Indonesia */}
+            {}
             <div
               className={`flag flag-id ${language === "id" ? "active" : ""}`}
               onClick={() => handleLanguageChange("id")}
@@ -120,7 +115,7 @@ const Navbar = () => {
           </div>
         </ul>
 
-        {/* Mobile Menu */}
+        {}
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
@@ -161,7 +156,7 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* 🌍 Pilihan Bahasa Mobile */}
+            {}
             <div className="flex items-center gap-3 mt-4">
               <div
                 className={`flag flag-id ${language === "id" ? "active" : ""}`}

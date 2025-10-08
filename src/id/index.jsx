@@ -1,0 +1,9 @@
+export { default as About } from "./components//About";
+export { default as Resume } from "./components//Resume";
+export { default as Experience } from "./components//Experience";
+export { default as Hero } from "./components//Hero";
+export { default as Navbar } from "./components//Navbar";
+export { default as Tech } from "./components//Tech";
+export { default as Works } from "./components//Works";
+export { default as CVCode } from "./components/CVCode";
+export { default as Footer } from "./components/Footer";
