@@ -48,9 +48,9 @@
 }
 
 .green-pink-gradient {
-  background: "#00cea8";
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+   background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .orange-text-gradient {
@@ -256,7 +256,7 @@ body::-webkit-scrollbar {
 .hero-wave path:nth-child(6) { animation-delay: 15s; }
 
 
-/* Responsive tweak */
+
 @media (max-width: 640px) {
   .hero-wave { opacity: 0.85; transform: translateX(-4%); }
   .hero-wave g { stroke-width: 1.4; }
@@ -279,3 +279,31 @@ body::-webkit-scrollbar {
 }
 
 
+.blue-cyan-gradient {
+  background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+}
+
+.navy-blue-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2563EB 100%);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(15, 23, 42, 0.3);
+}
+.navy-blue-gradient:hover {
+  
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
+}
+
+.blue-gold-gradient {
+  background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #FACC15 100%);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(250, 204, 21, 0.3);
+}
+.blue-gold-gradient:hover {
+ 
+  box-shadow: 0 12px 25px rgba(250, 204, 21, 0.4);
+}
+.card-wrapper:hover .shadow-card {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
