@@ -106,17 +106,20 @@ const Works = () => {
 
   return (
     <>
-      <div>
-        <p className={styles.sectionSubText}>My Work</p>
-        <h2 className={styles.sectionHeadText}>Projects.</h2>
-      </div>
-      <div className="w-full flex">
-              <div className="w-full flex">
-        <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-         During my studies and internship, I have worked on several projects, including an emotion detection system, a student management system, a student complaint tracking system, and a warehouse management application. These experiences allowed me to apply my technical skills, collaborate effectively in team settings, and gain hands-on experience in software development, system analysis, and problem-solving in real-world scenarios.
-        </p>
-      </div>
-      </div>
+     <div>
+  <p className={styles.sectionSubText}>Portfolio Showcase</p>
+  <h2 className={styles.sectionHeadText}>Projects</h2>
+</div>
+<div className="w-full flex">
+  <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
+    I have developed a variety of projects during my studies and internship,
+    ranging from an to student and warehouse
+    management applications. These projects allowed me to strengthen my
+    technical expertise, apply problem-solving skills, and gain hands-on
+    experience in delivering real-world software solutions.
+  </p>
+</div>
+
 
       <div className="w-full flex justify-center items-center mt-10 relative">
         {}
