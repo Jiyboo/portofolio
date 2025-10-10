@@ -9,7 +9,7 @@ const Hero = () => {
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
 
-  // --- Efek teks ketik otomatis ---
+  
   useEffect(() => {
     const typed = new Typed(typedEl.current, {
       strings: [
@@ -25,7 +25,7 @@ const Hero = () => {
     return () => typed.destroy();
   }, []);
 
-  // --- Efek parallax desktop + mobile gyroscope ---
+  
   useEffect(() => {
     const element = heroRef.current;
     if (!element) return;
@@ -66,7 +66,7 @@ const Hero = () => {
     };
   }, []);
 
-  // --- Efek grid glowing + glitch layar rusak ---
+  
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -78,7 +78,7 @@ const Hero = () => {
     const rows = Math.ceil(height / size);
     const grid = [];
 
-    // Inisialisasi grid
+    
     for (let x = 0; x < cols; x++) {
       for (let y = 0; y < rows; y++) {
         grid.push({
@@ -96,7 +96,7 @@ const Hero = () => {
       });
     };
 
-    // --- Efek glitch futuristik ---
+    
     let glitchActive = false;
     let glitchTime = 0;
 
@@ -112,7 +112,7 @@ const Hero = () => {
         ctx.putImageData(imgData, offset, y);
       }
 
-      // RGB shift efek (layer berwarna sedikit bergeser)
+      
       ctx.globalCompositeOperation = "screen";
       ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
       ctx.fillRect(0, 0, width, height);
@@ -127,7 +127,7 @@ const Hero = () => {
         ctx.fillRect(cell.x, cell.y, size, size);
       });
 
-      // Jalankan glitch sebentar
+      
       if (glitchActive) {
         drawGlitch();
         if (time - glitchTime > 300 + Math.random() * 200) {
@@ -162,13 +162,13 @@ const Hero = () => {
       ref={heroRef}
       className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]"
     >
-      {/* 🔹 Lapisan 1: Canvas grid + glitch */}
+      
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
       ></canvas>
 
-      {/* 🔹 Lapisan 2: Gelombang biru */}
+      
       <motion.svg
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -195,7 +195,7 @@ const Hero = () => {
         </g>
       </motion.svg>
 
-      {/* 🔹 Konten Hero */}
+      
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -225,10 +225,10 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* 🔹 Lapisan 4: 3D Canvas */}
+      
       <ComputersCanvas />
 
-      {/* 🔹 Scroll indicator */}
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

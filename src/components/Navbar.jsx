@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { menu, close } from "../assets";
-import logo from "../assets/logo.png"; // pastikan path ini sesuai
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -66,7 +66,7 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        {/* === Logo dan Nama === */}
+        
         <Link
           to="/"
           className="flex items-center gap-3"
@@ -85,7 +85,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        {/* === Menu Desktop === */}
+        
         <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
           {navLinks.map((nav) => (
             <li
@@ -111,7 +111,7 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* === Tombol Bahasa === */}
+          
           <div className="flex items-center gap-3 ml-6">
             <div
               className={`flag flag-id cursor-pointer ${
@@ -131,7 +131,7 @@ const Navbar = () => {
           </div>
         </ul>
 
-        {/* === Menu Mobile === */}
+        
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
@@ -172,7 +172,7 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Tombol Bahasa Mobile */}
+            
             <div className="flex items-center gap-3 mt-4">
               <div
                 className={`flag flag-id ${language === "id" ? "ring-2 ring-[#2563EB]" : ""}`}
