@@ -14,7 +14,7 @@ const Contact = () => {
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
-      {}
+
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className="flex-[0.75] bg-black-100 p-8 rounded-2xl overflow-y-auto"
@@ -29,13 +29,10 @@ const Contact = () => {
             className="w-full h-auto rounded-lg"
           />
         </div>
-
-        {}
         <div className="hidden sm:block mt-2 w-full h-[400px] overflow-y-auto border border-gray-700 rounded-lg bg-white p-4">
           <CVCode />
         </div>
 
-        {}
         <a
           href={cvFile}
           download="Afsal_Maulana_CV.pdf"
@@ -45,7 +42,6 @@ const Contact = () => {
         </a>
       </motion.div>
 
-      {}
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
         className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
