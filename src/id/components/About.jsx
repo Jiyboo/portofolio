@@ -96,13 +96,11 @@ const About = () => {
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
 
-  // Heading Animation
   useGsap(headingRef, {
     from: { opacity: 0, x: -50 },
     to: { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
   });
 
-  // Paragraph Animation
   useGsap(
     paragraphRef,
     {
