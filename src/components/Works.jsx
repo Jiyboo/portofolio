@@ -8,7 +8,7 @@ import { projects } from "../constants";
 
 const ProjectCard = ({ project, position }) => {
   const baseStyle =
-    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px] select-none"; // biar gak highlight pas drag
+    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px] select-none"; 
 
   let xPos = 0;
   let scale = 0.85;
