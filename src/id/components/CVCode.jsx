@@ -7,8 +7,8 @@ const CV = () => {
       {}
       <style>{`
         .hide-scrollbar {
-          -ms-overflow-style: none;  /* IE, Edge */
-          scrollbar-width: none;     /* Firefox */
+          -ms-overflow-style: none;  
+          scrollbar-width: none;    
         }
         .hide-scrollbar::-webkit-scrollbar {
           display: none;             /* Chrome, Safari, Opera */
@@ -127,4 +127,5 @@ const CV = () => {
 };
 
 export default CV;
+
 
