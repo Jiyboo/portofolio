@@ -28,7 +28,7 @@
 
 ##### \- 📂 \*\*Project Showcase\*\* – Highlight of selected works with descriptions and links.
 
-##### \- 📧 \*\*Contact Section\*\* – Easy way for visitors to reach out.
+##### \- 📧 \*\*Resmue Section\*\* – Easy way for visitors to reach out.
 
 ##### 
 
