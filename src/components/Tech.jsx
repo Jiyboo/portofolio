@@ -39,7 +39,6 @@ const Tech = () => {
             />
           </div>
         ))}
-        {}
         {technologies.map((technology) => (
           <div className="w-28 h-28 flex-shrink-0" key={technology.name + "-clone"}>
             <img

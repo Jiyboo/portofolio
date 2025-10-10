@@ -8,27 +8,28 @@ import { projects } from "../constants";
 
 const ProjectCard = ({ project, position }) => {
   const baseStyle =
-    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px]"; // jarak rapat
+    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px] select-none"; // biar gak highlight pas drag
 
   let xPos = 0;
   let scale = 0.85;
   let opacity = 0.4;
   let zIndex = 5;
 
-if (position === "left") {
-  xPos = -200;
-  opacity = 0.7;
-  scale = 0.9;
-} else if (position === "center") {
-  xPos = 0;
-  scale = 1.05;
-  opacity = 1;
-  zIndex = 20;
-} else if (position === "right") {
-  xPos = 200;
-  opacity = 0.7;
-  scale = 0.9;
-}
+  if (position === "left") {
+    xPos = -200;
+    opacity = 0.7;
+    scale = 0.9;
+  } else if (position === "center") {
+    xPos = 0;
+    scale = 1.05;
+    opacity = 1;
+    zIndex = 20;
+  } else if (position === "right") {
+    xPos = 200;
+    opacity = 0.7;
+    scale = 0.9;
+  }
+
   return (
     <Tilt options={{ max: 25, scale: 1, speed: 400 }}>
       <motion.div
@@ -37,7 +38,7 @@ if (position === "left") {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ x: xPos, scale, opacity, zIndex }}
         exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         className={`${baseStyle}`}
         style={{ zIndex }}
       >
@@ -45,7 +46,7 @@ if (position === "left") {
           <img
             src={project.image}
             alt={project.name}
-            className="w-full h-full object-cover rounded-2xl"
+            className="w-full h-full object-cover rounded-2xl pointer-events-none"
           />
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
@@ -69,17 +70,16 @@ if (position === "left") {
             {project.description}
           </p>
         </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-    {project.tags.map((tag, index) => (
-      <p
-        key={`${project.name}-${tag.name}-${index}`}
-        className={`text-[14px] ${tag.color}`}
-      >
-        #{tag.name}
-      </p>
-    ))}
-
-</div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tags.map((tag, index) => (
+            <p
+              key={`${project.name}-${tag.name}-${index}`}
+              className={`text-[14px] ${tag.color}`}
+            >
+              #{tag.name}
+            </p>
+          ))}
+        </div>
       </motion.div>
     </Tilt>
   );
@@ -88,15 +88,17 @@ if (position === "left") {
 const Works = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(100);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragEnd, setDragEnd] = useState(0);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-    setProgress(100); 
+    setProgress(100);
   };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
-    setProgress(100); 
+    setProgress(100);
   };
 
   useEffect(() => {
@@ -106,19 +108,35 @@ const Works = () => {
           nextSlide();
           return 100;
         }
-        return p - 2; 
+        return p - 2;
       });
     }, 100);
     return () => clearInterval(timer);
   }, []);
+
+  const handleDragStart = (event, info) => {
+    setDragStart(info.point.x);
+  };
+
+  const handleDragEnd = (event, info) => {
+    setDragEnd(info.point.x);
+    const dragDistance = info.point.x - dragStart;
+
+    // Deteksi arah swipe
+    if (dragDistance > 100) {
+      prevSlide();
+    } else if (dragDistance < -100) {
+      nextSlide();
+    }
+  };
 
   const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
   const nextIndex = (currentIndex + 1) % projects.length;
 
   return (
     <>
-     <div>
-  <p className={styles.sectionSubText}>Portofolio</p>
+      <div>
+ <p className={styles.sectionSubText}>Portofolio</p>
   <h2 className={styles.sectionHeadText}>Proyek</h2>
 </div>
 <div className="w-full flex">
@@ -129,20 +147,22 @@ const Works = () => {
     mengasah kemampuan pemecahan masalah, serta memperoleh pengalaman langsung 
     dalam membangun solusi perangkat lunak yang aplikatif di dunia nyata.
   </p>
-</div>
+      </div>
 
-
-      <div className="w-full flex justify-center items-center mt-10 relative">
-        {}
+      <div className="w-full flex justify-center items-center mt-10 relative overflow-hidden">
         <button
           onClick={prevSlide}
           className="absolute left-0 text-3xl px-4 py-2 text-blue-400 hover:text-blue-600 z-30"
         >
           ❮
         </button>
-
-        {}
-        <div className="flex items-center justify-center overflow-hidden w-full 0 relative">
+        <motion.div
+          className="flex items-center justify-center overflow-hidden w-full relative cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
           <AnimatePresence mode="popLayout">
             <ProjectCard
               key={projects[prevIndex].name}
@@ -160,9 +180,9 @@ const Works = () => {
               position="right"
             />
           </AnimatePresence>
-        </div>
+        </motion.div>
 
-        {}
+        
         <button
           onClick={nextSlide}
           className="absolute right-0 text-3xl px-4 py-2 text-blue-400 hover:text-blue-600 z-30"
@@ -171,7 +191,6 @@ const Works = () => {
         </button>
       </div>
 
-      {}
       <div className="w-full flex justify-center mt-6">
         <div className="w-48 h-2 bg-gray-700 rounded-full overflow-hidden">
           <div

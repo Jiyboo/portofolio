@@ -29,7 +29,6 @@ const useGsap = (elementRef, animation, delay = 0) => {
   }, [elementRef, animation, delay]);
 };
 
-// Gradient list untuk looping
 const gradients = [
   "blue-cyan-gradient",
   "navy-blue-gradient",
@@ -42,36 +41,44 @@ const ServiceCard = ({ index, title, icon, description }) => {
   const [flipped, setFlipped] = useState(false);
   const gradientClass = gradients[index % gradients.length];
 
+  useEffect(() => {
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: index * 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 90%",
+        },
+      }
+    );
+  }, [index]);
+
   return (
     <Tilt className="xs:w-[250px] w-full">
       <div
         ref={cardRef}
-        className="relative w-full h-[280px] perspective overflow-hidden"
+        className="relative w-full h-[280px] perspective overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500"
         onClick={() => setFlipped(!flipped)}
       >
-
-        {/* CARD */}
         <div
           className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
             flipped ? "rotate-y-180" : ""
           }`}
         >
-          {/* FRONT */}
-          <div
-            className={`absolute w-full h-full backface-hidden ${gradientClass} p-[1px] rounded-[20px] shadow-card`}
-          >
+          <div className={`absolute w-full h-full  ${gradientClass} p-[1px] rounded-[20px] shadow-card`}>
             <div className="bg-tertiary rounded-[20px] py-5 px-12 flex justify-evenly items-center flex-col h-full">
               <img src={icon} alt={title} className="w-16 h-16 object-contain" />
-              <h3 className="text-white text-[20px] font-bold text-center">
-                {title}
-              </h3>
+              <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
             </div>
           </div>
 
-          {/* BACK */}
-          <div
-            className={`absolute w-full h-full backface-hidden rotate-y-180 ${gradientClass} p-[1px] rounded-[20px] shadow-card`}
-          >
+          <div className={`absolute w-full h-full backface-hidden rotate-y-180 ${gradientClass} p-[1px] rounded-[20px] shadow-card`}>
             <div className="bg-tertiary rounded-[20px] py-5 px-6 flex justify-center items-center h-full">
               <p className="text-white text-center text-[14px] leading-relaxed">
                 {description}
