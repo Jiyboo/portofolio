@@ -4,7 +4,6 @@ import cvImage from "../assets/cv.png";
 const CV = () => {
   return (
     <div className="relative px-4 sm:px-6 lg:px-8">
-      {}
       <style>{`
         .hide-scrollbar {
           -ms-overflow-style: none;  /* IE, Edge */
@@ -14,8 +13,6 @@ const CV = () => {
           display: none;             /* Chrome, Safari, Opera */
         }
       `}</style>
-
-      {}
       <div className="block sm:hidden">
         <img
           src={cvImage}
@@ -24,10 +21,9 @@ const CV = () => {
         />
       </div>
 
-      {}
       <div className="hidden sm:block">
         <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white text-gray-900 border border-gray-300 shadow-md leading-relaxed rounded-lg hide-scrollbar break-words">
-          {}
+
           <header className="text-center mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-wide">
               AFSAL MAULANA
@@ -44,7 +40,6 @@ const CV = () => {
             </p>
           </header>
 
-          {}
           <section className="mb-6 text-xs sm:text-sm leading-relaxed">
             <p>
               I am a graduate in Information Systems from Universitas Bina
@@ -58,7 +53,6 @@ const CV = () => {
 
           <hr className="border-t-2 border-gray-700 mb-6" />
 
-          {}
           <section className="mb-6">
             <h2 className="font-bold text-base sm:text-lg mb-2">EDUCATION</h2>
             <p className="font-semibold text-sm sm:text-base">
@@ -67,7 +61,6 @@ const CV = () => {
             <p className="text-xs sm:text-sm">GPA: 3.90 / 4.00 (2021 - 2025)</p>
           </section>
 
-          {}
           <section className="mb-6">
             <h2 className="font-bold text-base sm:text-lg mb-2">
               INTERNSHIP EXPERIENCE
@@ -82,7 +75,6 @@ const CV = () => {
             </ul>
           </section>
 
-          {}
           <section className="mb-6">
             <h2 className="font-bold text-base sm:text-lg mb-2">
               NON-FORMAL EDUCATION
@@ -93,7 +85,6 @@ const CV = () => {
             </ul>
           </section>
 
-          {}
           <section className="mb-6">
             <h2 className="font-bold text-base sm:text-lg mb-2">
               CERTIFICATIONS
@@ -107,7 +98,6 @@ const CV = () => {
             </ul>
           </section>
 
-          {/* Skills */}
           <section>
             <h2 className="font-bold text-base sm:text-lg mb-2">SKILLS</h2>
             <p className="text-xs sm:text-sm">
@@ -130,3 +120,4 @@ const CV = () => {
 };
 
 export default CV;
+
