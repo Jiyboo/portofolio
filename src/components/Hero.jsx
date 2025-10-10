@@ -102,7 +102,6 @@ const Hero = () => {
     let glitchTime = 0;
 
     const drawGlitch = () => {
-      // distorsi warna & potongan geser
       const sliceCount = 4 + Math.floor(Math.random() * 4);
       for (let i = 0; i < sliceCount; i++) {
         const sliceHeight = 20 + Math.random() * 100;
