@@ -11,7 +11,7 @@ const CV = () => {
           scrollbar-width: none;    
         }
         .hide-scrollbar::-webkit-scrollbar {
-          display: none;             /* Chrome, Safari, Opera */
+          display: none;   
         }
       `}</style>
 
@@ -127,5 +127,6 @@ const CV = () => {
 };
 
 export default CV;
+
 
 
