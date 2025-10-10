@@ -1,90 +1,46 @@
-# \# 🌐 Personal Portfolio – React.js
+# 🌐 Personal Portfolio – React.js
 
-##### 
+A modern and responsive personal portfolio website built with **React.js** to showcase my projects, skills, and experience as a developer.
 
-##### This is my personal portfolio website built with \*\*React.js\*\*, designed to showcase my projects, skills, and experience as a developer.
+The portfolio features a clean UI/UX, smooth animations, and 3D interactive elements — all optimized for performance across devices.
 
-##### The site features a modern UI/UX with smooth animations, interactive elements, and a responsive layout optimized for all devices.
+---
 
-##### 
+## 🚀 Features
 
-##### ---
+- ⚡ **React.js** – Component-based, fast, and scalable.
+- 🎨 **Tailwind CSS** – Utility-first styling for clean and responsive design.
+- ✨ **Three.js** – Immersive 3D effects and animations.
+- 📱 **Fully Responsive** – Works seamlessly on desktop, tablet, and mobile.
+- 🌙 **Dark Theme** – Sleek and professional dark-mode interface.
+- 📂 **Project Showcase** – Highlighted works with details and live links.
+- 📧 **Resume & Contact Section** – Easy access for collaboration or inquiries.
 
-##### 
+---
 
-# \## 🚀 Features
+## 🛠️ Tech Stack
 
-##### 
+- [React.js](https://reactjs.org/) – Frontend library  
+- [Vite](https://vitejs.dev/) – Lightning-fast build tool and dev server  
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework  
+- [Three.js](https://threejs.org/) – 3D visuals and effects  
+- [React Router](https://reactrouter.com/) – Client-side routing  
 
-##### \- ⚡ \*\*Built with React.js\*\* – Component-based and highly scalable.
+---
 
-##### \- 🎨 \*\*Tailwind CSS\*\* – Utility-first styling for a modern and responsive design.
+## ⚙️ Installation & Setup
 
-##### \- ✨ \*\*3D \& Animations\*\* – Integrated effects using Three.js and custom animations.
+Follow these steps to run the project locally:
 
-##### \- 📱 \*\*Fully Responsive\*\* – Optimized for desktop, tablet, and mobile devices.
+```bash
+# Clone the repository
+git clone https://github.com/Jiyboo/portfolio.git
 
-##### \- 🌙 \*\*Dark Theme\*\* – Clean dark-mode UI for a professional aesthetic.
+# Navigate into the project directory
+cd portfolio
 
-##### \- 📂 \*\*Project Showcase\*\* – Highlight of selected works with descriptions and links.
+# Install dependencies
+npm install
 
-##### \- 📧 \*\*Resmue Section\*\* – Easy way for visitors to reach out.
-
-##### 
-
-##### ---
-
-##### 
-
-# \## 🛠️ Tech Stack
-
-##### 
-
-##### \- \[React.js](https://reactjs.org/) – Frontend library
-
-##### \- \[Vite](https://vitejs.dev/) – Fast build tool and dev server
-
-##### \- \[Tailwind CSS](https://tailwindcss.com/) – Styling framework
-
-##### \- \[Three.js](https://threejs.org/) – 3D visuals and effects
-
-##### \- \[React Router](https://reactrouter.com/) – Client-side routing
-
-##### 
-
-##### ---
-
-##### 
-
-##### 
-
-# \## ⚙️ Installation \& Setup
-
-##### 
-
-##### Clone the repository and install dependencies:
-
-##### 
-
-##### ```bash
-
-##### \# Clone the repo
-
-##### git clone https://github.com/Jiyboo/portofolio.git
-
-##### \# Navigate into the project
-
-##### cd portfolio
-
-##### 
-
-##### \# Install dependencies
-
-##### npm install
-
-##### 
-
-##### \# Start development server
-
-##### npm run dev
-
+# Start the development server
+npm run dev
