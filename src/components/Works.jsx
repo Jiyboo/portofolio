@@ -122,7 +122,6 @@ const Works = () => {
     setDragEnd(info.point.x);
     const dragDistance = info.point.x - dragStart;
 
-    // Deteksi arah swipe
     if (dragDistance > 100) {
       prevSlide();
     } else if (dragDistance < -100) {
