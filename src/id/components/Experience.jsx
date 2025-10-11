@@ -126,13 +126,15 @@ const Experience = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-          What I’ve Achieved So Far
-        </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
-          Career Highlights
-        </h2>
-      </motion.div>
+  <p className={`${styles.sectionSubText} text-center`}>
+    Pencapaian yang Telah Saya Raih
+  </p>
+  <h2 className={`${styles.sectionHeadText} text-center`}>
+    Sorotan Karier
+  </h2>
+</motion.div>
+
+
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline lineColor="rgba(37,99,235,0.6)">
