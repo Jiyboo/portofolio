@@ -54,11 +54,15 @@ Untuk menjalankan proyek di komputer lokal Anda:
 # Clone the repository
 git clone https://github.com/Jiyboo/portfolio.git
 
+```
+```bash
 # Navigate into the project directory
 cd portfolio
-
+```
+```bash
 # Install dependencies
 npm install
-
+```
+```bash
 # Start the development server
 npm run dev
