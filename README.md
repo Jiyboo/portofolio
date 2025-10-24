@@ -1,77 +1,54 @@
 # 🌐 Personal Portfolio – React.js
 
-A modern and responsive personal portfolio website built with **React.js** to showcase my projects, skills, and experience as a developer.
+A **modern and responsive personal portfolio website** built using **React.js**, designed to professionally showcase projects, technical skills, and work experience.
 
-<<<<<<< HEAD
-The portfolio features a clean UI/UX, smooth animations, and 3D interactive elements — all optimized for performance across devices.
+Sebuah **website portofolio pribadi modern dan responsif** yang dibangun menggunakan **React.js**, dirancang untuk menampilkan proyek, keahlian teknis, serta pengalaman kerja secara profesional.
 
----
-
-## 🚀 Features
-
-- ⚡ **React.js** – Component-based, fast, and scalable.
-- 🎨 **Tailwind CSS** – Utility-first styling for clean and responsive design.
-- ✨ **Three.js** – Immersive 3D effects and animations.
-- 📱 **Fully Responsive** – Works seamlessly on desktop, tablet, and mobile.
-- 🌙 **Dark Theme** – Sleek and professional dark-mode interface.
-- 📂 **Project Showcase** – Highlighted works with details and live links.
-- 📧 **Resume & Contact Section** – Easy access for collaboration or inquiries.
-
----
-
-## 🛠️ Tech Stack
-
-- [React.js](https://reactjs.org/) – Frontend library  
-- [Vite](https://vitejs.dev/) – Lightning-fast build tool and dev server  
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework  
-- [Three.js](https://threejs.org/) – 3D visuals and effects  
-- [React Router](https://reactrouter.com/) – Client-side routing  
-
----
-
-## ⚙️ Installation & Setup
-
-Follow these steps to run the project locally:
-
-```bash
-# Clone the repository
-git clone https://github.com/Jiyboo/portfolio.git
-
-# Navigate into the project directory
-cd portfolio
-
-=======
 🔗 **Live Demo:** [https://afslm.vercel.app/](https://afslm.vercel.app/)
 
-The portfolio features a clean UI/UX, smooth animations, and 3D interactive elements — all optimized for performance across devices.
+---
+
+## ✨ Overview | Gambaran Umum
+
+This portfolio features a clean and elegant design, smooth animations, and interactive 3D elements powered by **Three.js**, ensuring an engaging and responsive user experience across all devices.
+
+Portofolio ini menampilkan desain yang bersih dan elegan, animasi yang halus, serta elemen interaktif 3D menggunakan **Three.js**, sehingga memberikan pengalaman pengguna yang menarik dan responsif di berbagai perangkat.
 
 ---
 
-## 🚀 Features
+## 🚀 Features | Fitur Utama
 
-- ⚡ **React.js** – Component-based, fast, and scalable.
-- 🎨 **Tailwind CSS** – Utility-first styling for clean and responsive design.
-- ✨ **Three.js** – Immersive 3D effects and animations.
-- 📱 **Fully Responsive** – Works seamlessly on desktop, tablet, and mobile.
-- 🌙 **Dark Theme** – Sleek and professional dark-mode interface.
-- 📂 **Project Showcase** – Highlighted works with details and live links.
-- 📧 **Resume & Contact Section** – Easy access for collaboration or inquiries.
-
----
-
-## 🛠️ Tech Stack
-
-- [React.js](https://reactjs.org/) – Frontend library  
-- [Vite](https://vitejs.dev/) – Lightning-fast build tool and dev server  
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework  
-- [Three.js](https://threejs.org/) – 3D visuals and effects  
-- [React Router](https://reactrouter.com/) – Client-side routing  
+| English | Bahasa Indonesia |
+|----------|------------------|
+| ⚡ **React.js** – Component-based, fast, and scalable architecture. | ⚡ **React.js** – Arsitektur berbasis komponen yang cepat dan mudah dikembangkan. |
+| 🎨 **Tailwind CSS** – Clean, modern, and responsive design. | 🎨 **Tailwind CSS** – Desain yang bersih, modern, dan responsif. |
+| ✨ **Three.js** – Interactive and immersive 3D visuals. | ✨ **Three.js** – Visualisasi 3D yang interaktif dan menarik. |
+| 🌏 **Multi-language Support** – English and Bahasa Indonesia. | 🌏 **Dukungan Multi Bahasa** – Bahasa Inggris dan Bahasa Indonesia. |
+| 📱 **Responsive Layout** – Optimized for desktop, tablet, and mobile. | 📱 **Tata Letak Responsif** – Dioptimalkan untuk berbagai ukuran layar. |
+| 📂 **Project Showcase** – Display of selected works with descriptions and links. | 📂 **Galeri Proyek** – Menampilkan proyek-proyek unggulan dengan deskripsi dan tautan. |
+| 📧 **Resume & Contact Section** – For inquiries or collaboration opportunities. | 📧 **Bagian Resume & Kontak** – Untuk kerja sama atau pertanyaan profesional. |
+| 🌙 **Dark Theme** – Elegant and professional dark interface. | 🌙 **Tema Gelap** – Tampilan gelap yang elegan dan profesional. |
 
 ---
 
-## ⚙️ Installation & Setup
+## 🛠️ Tech Stack | Teknologi yang Digunakan
 
-Follow these steps to run the project locally:
+| Technology | Description |
+|-------------|-------------|
+| [React.js](https://reactjs.org/) | Frontend library for building user interfaces |
+| [Vite](https://vitejs.dev/) | Fast and optimized build tool |
+| [Tailwind CSS](https://tailwindcss.com/) | Utility-first CSS framework |
+| [Three.js](https://threejs.org/) | 3D rendering and animation library |
+| [React Router](https://reactrouter.com/) | Client-side routing for React |
+| [Vercel](https://vercel.com/) | Hosting and deployment platform |
+
+---
+
+## ⚙️ Installation & Setup | Instalasi dan Penyiapan
+
+**To run the project locally:**
+
+Untuk menjalankan proyek di komputer lokal Anda:
 
 ```bash
 # Clone the repository
@@ -80,7 +57,6 @@ git clone https://github.com/Jiyboo/portfolio.git
 # Navigate into the project directory
 cd portfolio
 
->>>>>>> 31cdec7 (update)
 # Install dependencies
 npm install
 
