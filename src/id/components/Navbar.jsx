@@ -97,7 +97,7 @@ const Navbar = () => {
           : "text-gray-400 hover:text-white"
       }`}
     >
-      {/* ICON PURE CSS */}
+
 <span
   className={`
     icon-base 
@@ -110,7 +110,7 @@ const Navbar = () => {
 
 
 
-      {/* LINK */}
+
   <a
   href={`#${nav.id}`}
   className={`nav-text ${active === nav.id ? "show" : ""}`}

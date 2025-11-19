@@ -97,7 +97,7 @@ const Navbar = () => {
           : "text-gray-400 hover:text-white"
       }`}
     >
-      {/* ICON PURE CSS */}
+
 <span
   className={`
     icon-base 
@@ -126,7 +126,7 @@ const Navbar = () => {
     </li>
   ))}
 
-  {/* FLAG SELECTOR */}
+
   <div className="flex items-center gap-3 ml-6">
     <div
       className={`flag flag-id cursor-pointer ${

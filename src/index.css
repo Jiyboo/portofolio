@@ -512,9 +512,6 @@ nav::after {
     0 0 60px rgba(126, 34, 206, 0.5);
   transform: scale(1.02);
 }
-/* =============================================== */
-/* BASE (Wajib)                                    */
-/* =============================================== */
 
 .icon-base {
   display: inline-block;
@@ -525,30 +522,22 @@ nav::after {
   animation: popIn 0.35s ease;
 }
 
-/* Saat menu active */
 .icon-active {
   transform: scale(1.35) !important;
   filter: brightness(1.4);
 }
 
-/* Saat hover universal */
 .icon-base:hover {
   transform: scale(1.25) rotate(4deg);
   filter: brightness(1.2);
 }
 
-/* POP animation */
 @keyframes popIn {
   0% { transform: scale(0.6); opacity: 0; }
   60% { transform: scale(1.3); opacity: 1; }
   100% { transform: scale(1); }
 }
 
-
-
-/* =============================================== */
-/* ABOUT → Ikon Orang                               */
-/* =============================================== */
 
 .icon-about::before {
   content: "";
@@ -583,11 +572,6 @@ nav::after {
   100% { transform: translateY(0); }
 }
 
-
-
-/* =============================================== */
-/* WORK → Orang depan komputer                      */
-/* =============================================== */
 
 .icon-works {
   width: 18px;
@@ -638,12 +622,6 @@ nav::after {
   100% { transform: translateY(0); }
 }
 
-
-
-/* =============================================== */
-/* EXPERIENCE → Tas kerja                           */
-/* =============================================== */
-
 .icon-experience {
   background: #ec4899;
   border-radius: 3px;
@@ -671,11 +649,6 @@ nav::after {
   60% { transform: translateX(2px); }
 }
 
-
-
-/* =============================================== */
-/* TECH → Gear                                       */
-/* =============================================== */
 
 .icon-tech {
   width: 14px;
@@ -709,11 +682,6 @@ nav::after {
 }
 
 
-
-/* =============================================== */
-/* CONTACT → Amplop                                  */
-/* =============================================== */
-
 .icon-contact {
   border: 2px solid #facc15;
   border-radius: 3px;
@@ -737,12 +705,6 @@ nav::after {
   0% { transform: rotateX(0deg); }
   100% { transform: rotateX(-30deg); }
 }
-
-
-
-/* =============================================== */
-/* RESUME → Dokumen                                  */
-/* =============================================== */
 
 .icon-resume {
   border: 2px solid #2563eb;
@@ -778,7 +740,7 @@ nav::after {
   50% { transform: translateX(2px); }
   100% { transform: translateX(0); }
 }
-/* TEKS NAV — tersembunyi */
+
 .nav-text {
   opacity: 0;
   white-space: nowrap;
@@ -796,7 +758,7 @@ nav::after {
     filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Saat hover → muncul super smooth */
+
 li:hover .nav-text {
   opacity: 1;
   max-width: 220px;
@@ -804,7 +766,7 @@ li:hover .nav-text {
   filter: blur(0);
 }
 
-/* Saat active → tetap tampil */
+
 .nav-text.show {
   opacity: 1 !important;
   max-width: 220px !important;
