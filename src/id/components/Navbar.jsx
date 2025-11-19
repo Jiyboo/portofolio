@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { menu, close } from "../assets";
-import logo from "../assets/logo.png"; 
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -86,51 +86,70 @@ const Navbar = () => {
         </Link>
 
         
-        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`cursor-pointer text-[18px] font-medium transition-all duration-300 ${
-                active === nav.id
-                  ? "text-white border-b-2 border-[#2563EB]"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              <a
-                href={`#${nav.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById(nav.id)
-                    .scrollIntoView({ behavior: "smooth" });
-                  setActive(nav.id);
-                }}
-              >
-                {nav.title}
-              </a>
-            </li>
-          ))}
+<ul className="list-none hidden sm:flex flex-row gap-10 items-center">
 
-          
-          <div className="flex items-center gap-3 ml-6">
-            <div
-              className={`flag flag-id cursor-pointer ${
-                language === "id" ? "ring-2 ring-[#2563EB]" : ""
-              }`}
-              onClick={() => handleLanguageChange("id")}
-            ></div>
-            <div
-              className={`flag flag-en cursor-pointer ${
-                language === "en" ? "ring-2 ring-[#2563EB]" : ""
-              }`}
-              onClick={() => handleLanguageChange("en")}
-            >
-              <div className="cross-red-horizontal"></div>
-              <div className="cross-red-vertical"></div>
-            </div>
-          </div>
-        </ul>
+  {navLinks.map((nav) => (
+    <li
+      key={nav.id}
+      className={`cursor-pointer text-[18px] font-medium flex items-center gap-2 transition-all duration-300 ${
+        active === nav.id
+          ? "text-white border-b-2 border-[#2563EB]"
+          : "text-gray-400 hover:text-white"
+      }`}
+    >
+      {/* ICON PURE CSS */}
+<span
+  className={`
+    icon-base 
+    ${nav.id === "about" && "icon-about"}
+    ${nav.id === "works" && "icon-works"}
+    ${nav.id === "resume" && "icon-resume"}
+    ${active === nav.id ? "scale-125" : "opacity-70"}
+  `}
+/>
 
+
+
+      {/* LINK */}
+  <a
+  href={`#${nav.id}`}
+  className={`nav-text ${active === nav.id ? "show" : ""}`}
+  onClick={(e) => {
+    e.preventDefault();
+    document.getElementById(nav.id).scrollIntoView({ behavior: "smooth" });
+    setActive(nav.id);
+  }}
+>
+  {nav.title}
+</a>
+
+    </li>
+  ))}
+
+  {/* FLAG SELECTOR */}
+  <div className="flex items-center gap-3 ml-6">
+    <div
+      className={`flag flag-id cursor-pointer ${
+        language === "id" ? "ring-2 ring-[#2563EB]" : ""
+      }`}
+      onClick={() => handleLanguageChange("id")}
+    ></div>
+
+    <div
+      className={`flag flag-en cursor-pointer relative ${
+        language === "en" ? "ring-2 ring-[#2563EB]" : ""
+      }`}
+      onClick={() => handleLanguageChange("en")}
+    >
+      <div className="cross-red-horizontal"></div>
+      <div className="cross-red-vertical"></div>
+    </div>
+  </div>
+
+</ul>
+
+
+        
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
