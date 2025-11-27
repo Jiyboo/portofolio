@@ -14,14 +14,14 @@ const Footer = () => {
       {/*
       <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
         <FaXTwitter size={24} />
-      </a>
+      </a>*/
       <a
-        href="https://www.linkedin.com/"
+        href="https://www.linkedin.com/in/afsal-maulana-31122002af//"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaLinkedin size={24} />
-      </a>*/}
+      </a>}
     </footer>
   );
 };

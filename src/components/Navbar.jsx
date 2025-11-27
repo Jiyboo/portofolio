@@ -4,6 +4,7 @@ import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { menu, close } from "../assets";
 import logo from "../assets/logo.png";
+import BottomNav from "./BottomNav"; 
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -14,20 +15,25 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 100);
+  const handleScroll = () => {
+    const sections = navLinks.map(nav => document.getElementById(nav.id));
 
-      const nav = document.querySelector("nav");
-      if (nav) {
-        const intensity = Math.min(scrollY / 400, 1);
-        nav.style.setProperty("--light-opacity", `${0.85 - intensity * 0.6}`);
+    sections.forEach(sec => {
+      if (!sec) return;
+
+      const rect = sec.getBoundingClientRect();
+      const isVisible = rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4;
+
+      if (isVisible) {
+        setActive(sec.id);
       }
-    };
+    });
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -60,6 +66,7 @@ const Navbar = () => {
   };
 
   return (
+    <>
     <nav
       className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-500 ${
         scrolled ? "bg-[#050b18]/80 backdrop-blur-md" : "bg-transparent"
@@ -110,7 +117,6 @@ const Navbar = () => {
 
 
 
-      {/* LINK */}
   <a
   href={`#${nav.id}`}
   className={`nav-text ${active === nav.id ? "show" : ""}`}
@@ -149,65 +155,59 @@ const Navbar = () => {
 </ul>
 
 
-        
-        <div className="sm:hidden flex flex-1 justify-end items-center">
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
-            onClick={() => setToggle(!toggle)}
-          />
 
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 bg-[#0b1220]/95 backdrop-blur-lg absolute top-20 right-0 mx-4 my-2 min-w-[160px] z-10 rounded-xl flex-col gap-4 border border-[#2563EB]/40`}
-          >
-            <ul className="list-none flex flex-col gap-4">
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.id
-                      ? "text-white border-b border-[#2563EB]"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  <a
-                    href={`#${nav.id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document
-                        .getElementById(nav.id)
-                        .scrollIntoView({ behavior: "smooth" });
-                      setActive(nav.id);
-                      setToggle(false);
-                    }}
-                  >
-                    {nav.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
+<div className="sm:hidden flex flex-1 justify-end items-center">
+  <img
+    src={toggle ? close : menu}
+    alt="menu"
+    className="w-[28px] h-[28px] object-contain cursor-pointer"
+    onClick={() => setToggle(!toggle)}
+  />
 
-            
-            <div className="flex items-center gap-3 mt-4">
-              <div
-                className={`flag flag-id ${language === "id" ? "ring-2 ring-[#2563EB]" : ""}`}
-                onClick={() => handleLanguageChange("id")}
-              ></div>
-              <div
-                className={`flag flag-en ${language === "en" ? "ring-2 ring-[#2563EB]" : ""}`}
-                onClick={() => handleLanguageChange("en")}
-              >
-                <div className="cross-red-horizontal"></div>
-                <div className="cross-red-vertical"></div>
-              </div>
-            </div>
-          </div>
+  <div
+    className={`
+      absolute right-0 mx-4 my-2 top-20 min-w-[170px] z-30
+      backdrop-blur-xl rounded-xl border border-[#2563EB]/40 bg-[#0b1220]/95
+      flex flex-col gap-4 p-6
+      transition-all duration-300 origin-top
+      ${toggle ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"}
+    `}
+  >
+
+    <div className="mt-2">
+      <p className="text-gray-400 text-sm mb-2">Language</p>
+
+      <div className="flex items-center gap-4">
+
+        <div
+      className={`flag flag-id cursor-pointer ${
+        language === "id" ? "ring-2 ring-[#2563EB]" : ""
+      }`}
+      onClick={() => handleLanguageChange("id")}
+    ></div>
+
+
+        <div
+          className={`flag flag-en cursor-pointer relative ${
+        language === "en" ? "ring-2 ring-[#2563EB]" : ""
+      }`}
+      onClick={() => handleLanguageChange("en")}
+    >
+      <div className="cross-red-horizontal"></div>
+      <div className="cross-red-vertical"></div>
         </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
       </div>
     </nav>
+    <BottomNav active={active} setActive={setActive} />
+  </>
   );
 };
 
