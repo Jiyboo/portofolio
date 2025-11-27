@@ -22,7 +22,7 @@ const Computers = () => {
       <primitive
   object={computer.scene}
   scale={0.75} 
-  position={[0, -5, -2]}  // Y lebih kecil = turun
+  position={[0, -5, -2]}  
   rotation={[-0.01, -0.2, -0.1]}
 />
 
@@ -48,7 +48,7 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    !isMobile && ( // Hide on mobile screens
+    !isMobile && (
       <Canvas
         frameloop="demand"
         shadows
