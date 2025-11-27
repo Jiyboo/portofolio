@@ -24,17 +24,17 @@
 }
 
 .black-gradient {
-  background: #000000; /* fallback for old browsers */
+  background: #000000; 
   background: -webkit-linear-gradient(
     to right,
     #434343,
     #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to right,
     #434343,
     #000000
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
 }
 
 .violet-gradient {
@@ -54,71 +54,71 @@
 }
 
 .orange-text-gradient {
-  background: #f12711; /* fallback for old browsers */
+  background: #f12711; 
   background: -webkit-linear-gradient(
     to top,
     #f12711,
     #f5af19
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to top,
     #f12711,
     #f5af19
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .green-text-gradient {
-  background: #11998e; /* fallback for old browsers */
+  background: #11998e; 
   background: -webkit-linear-gradient(
     to top,
     #11998e,
     #38ef7d
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to top,
     #11998e,
     #38ef7d
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .blue-text-gradient {
-  /* background: -webkit-linear-gradient(#eee, #333); */
-  background: #56ccf2; /* fallback for old browsers */
+  
+  background: #56ccf2; 
   background: -webkit-linear-gradient(
     to top,
     #2f80ed,
     #56ccf2
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  );
   background: linear-gradient(
     to top,
     #2f80ed,
     #56ccf2
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .pink-text-gradient {
-  background: #ec008c; /* fallback for old browsers */
+  background: #ec008c;
   background: -webkit-linear-gradient(
     to top,
     #ec008c,
     #fc6767
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to top,
     #ec008c,
     #fc6767
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* canvas- styles */
+
 .canvas-loader {
   font-size: 10px;
   width: 1em;
@@ -224,7 +224,6 @@ body::-webkit-scrollbar {
   color: #e8f5ff;
 }
 
-/* Floating anim */
 @keyframes float-slow {
   0%   { transform: translateX(-10%) translateY(-2px); }
   50%  { transform: translateX(-10%) translateY(6px); }
@@ -235,7 +234,6 @@ body::-webkit-scrollbar {
   transform-origin: center;
 }
 
-/* Wave stroke animation - infinite seamless */
 @keyframes wave-line {
   0%   { stroke-dashoffset: 0; }
   100% { stroke-dashoffset: -4000; } 
@@ -307,7 +305,7 @@ body::-webkit-scrollbar {
 .card-wrapper:hover .shadow-card {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
-/* Umum untuk semua flag */
+
 .flag {
   width: 32px;
   height: 20px;
@@ -331,17 +329,15 @@ body::-webkit-scrollbar {
   border: 2px solid white;
 }
 
-/* 🇮🇩 Indonesia */
 .flag-id {
   background: linear-gradient(to bottom, #ff0000 50%, #ffffff 50%);
 }
 
-/* 🇬🇧 Inggris — desain Union Jack pakai CSS */
+
 .flag-en {
-  background-color: #00247d; /* Biru tua dasar */
+  background-color: #00247d; 
 }
 
-/* Garis putih salib */
 .flag-en::before,
 .flag-en::after {
   content: "";
@@ -349,7 +345,6 @@ body::-webkit-scrollbar {
   background-color: #ffffff;
 }
 
-/* Salib putih horizontal */
 .flag-en::before {
   top: 50%;
   left: 0;
@@ -358,7 +353,6 @@ body::-webkit-scrollbar {
   transform: translateY(-50%);
 }
 
-/* Salib putih vertikal */
 .flag-en::after {
   left: 50%;
   top: 0;
@@ -367,7 +361,6 @@ body::-webkit-scrollbar {
   transform: translateX(-50%);
 }
 
-/* Tambahkan salib merah di atas putih */
 .flag-en .cross-red-horizontal,
 .flag-en .cross-red-vertical {
   position: absolute;
@@ -375,7 +368,6 @@ body::-webkit-scrollbar {
   z-index: 2;
 }
 
-/* Garis merah horizontal di tengah */
 .flag-en .cross-red-horizontal {
   top: 50%;
   left: 0;
@@ -384,7 +376,6 @@ body::-webkit-scrollbar {
   transform: translateY(-50%);
 }
 
-/* Garis merah vertikal di tengah */
 .flag-en .cross-red-vertical {
   left: 50%;
   top: 0;
@@ -392,11 +383,11 @@ body::-webkit-scrollbar {
   height: 100%;
   transform: translateX(-50%);
 }
-/* ====== NAVBAR SPOTLIGHT EFFECT ====== */
+
 nav {
   position: relative;
   z-index: 10;
-  background: rgba(2, 6, 23, 0.3); /* transparan biru gelap */
+  background: rgba(2, 6, 23, 0.3); 
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(37, 99, 235, 0.3);
   transition: background 0.6s ease;
@@ -412,9 +403,9 @@ nav::after {
   height: 50px;
   background: radial-gradient(
     ellipse at center,
-    rgba(37, 99, 235, 0.45) 0%,   /* tengah biru neon */
-    rgba(37, 99, 235, 0.2) 50%,   /* memudar */
-    rgba(0, 0, 0, 0) 100%         /* transparan di pinggir */
+    rgba(37, 99, 235, 0.45) 0%,   
+    rgba(37, 99, 235, 0.2) 50%,   
+    rgba(0, 0, 0, 0) 100%         
   );
   filter: blur(25px);
   opacity: var(--light-opacity, 0.85);
@@ -423,7 +414,6 @@ nav::after {
   animation: light-wave 6s ease-in-out infinite alternate;
 }
 
-/* Lampu sorot goyang lembut (biar kayak pantulan neon hidup) */
 @keyframes light-wave {
   0% {
     transform: translateX(-50%) scaleX(1);

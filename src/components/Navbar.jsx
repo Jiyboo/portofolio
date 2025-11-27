@@ -109,7 +109,7 @@ const Navbar = () => {
   className={`
     icon-base 
     ${nav.id === "about" && "icon-about"}
-    ${nav.id === "works" && "icon-works"}
+    ${nav.id === "works" && "icon-experience"}
     ${nav.id === "resume" && "icon-resume"}
     ${active === nav.id ? "scale-125" : "opacity-70"}
   `}
