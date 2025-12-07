@@ -13,6 +13,7 @@ import java from './tech/java.png'
 import framer from './tech/framer.png';
 import css from "./tech/css.png";
 import figma from "./tech/figma.png";
+import project5 from './project5.png';
 import project4 from './project4.png';
 import project3 from './project3.png';
 import project2 from './proj1.png'
@@ -46,6 +47,7 @@ export {
   project2,
   project3,
   project4,
+  project5,
   mysql,
   express,
   aws,

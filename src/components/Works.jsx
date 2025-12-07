@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { github, link } from "../assets";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
+import { projects, tagLinks  } from "../constants";
 
 const ProjectCard = ({ project, position }) => {
   const baseStyle =
@@ -71,14 +71,18 @@ const ProjectCard = ({ project, position }) => {
           </p>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag, index) => (
-            <p
-              key={`${project.name}-${tag.name}-${index}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
+          {project.tags.map((tag, index) => {
+            const url = tagLinks[tag.name.toLowerCase()];
+            return (
+              <button
+                key={`${project.name}-${tag.name}-${index}`}
+                onClick={() => url && window.open(url, "_blank")}
+                className={`text-[14px] ${tag.color} hover:underline cursor-pointer`}
+              >
+                #{tag.name}
+              </button>
+              );
+          })}        
         </div>
       </motion.div>
     </Tilt>
