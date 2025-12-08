@@ -14,6 +14,7 @@ import {
   project2,
   project3,
   project4,
+  project5,
   mysql,
   express,
   aws,
@@ -198,7 +199,16 @@ const experiences = [
   },
 ];
 
-
+export const tagLinks = {
+  php: "https://www.php.net",
+  "ci-4": "https://codeigniter.com/user_guide/",
+  "ci-3": "https://codeigniter.com/user_guide_3/",
+  mysql: "https://www.mysql.com",
+  js: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  java: "https://www.java.com",
+  apache: "https://httpd.apache.org/",
+  jasper: "https://community.jaspersoft.com/",
+};
 const projects = [
   {
     name: "Aplikasi Manajemen Gudang",
@@ -272,6 +282,32 @@ const projects = [
     ],
     image: project4,
     source_code_link: "https://github.com/Jiyboo/pengaduan_masyarakat.git",
+  },
+     {
+ name: "Sistem  Parkir",
+  description:
+    "Sistem Manajemen Parkir berbasis web ini dirancang untuk mengelola area parkir, data kendaraan, dan transaksi parkir secara efisien. Sistem ini memungkinkan administrator menambahkan pengguna serta menyesuaikan peran dengan izin tertentu, sehingga pengelolaan akses menjadi lebih aman dan operasional parkir lebih terstruktur.",
+     tags: [
+      {
+        name: "CI-3",
+        color: "red-text-gradient",
+      },
+      {
+        name: "PHP",
+        color: "white-text-gradient",
+      },
+      {
+        name: "MySql",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "JS",
+        color: "green-text-gradient",
+      },
+ 
+    ],
+    image: project5,
+    source_code_link: "https://parking.gamer.gd/",
   },
 ];
 
