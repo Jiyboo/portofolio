@@ -44,7 +44,7 @@ const CV = () => {
                 href="mailto:afsalonline01@gmail.com"
                 className="text-blue-600 underline"
               >
-                <a href="https://afslm.vercel.app/">|🌐 Website</a>
+                <a href="https://afslm.vercel.app/id">|🌐 Website</a>
               </a>{" "}
               | Jln Raya Ciracas Gg Bangi 1
 
