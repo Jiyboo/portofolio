@@ -33,14 +33,21 @@ const CV = () => {
               AFSAL MAULANA
             </h1>
             <p className="mt-2 text-xs sm:text-sm">
-              081387272911 |{" "}
+              |📞 081387272911 |{" "}
               <a
                 href="mailto:afsalonline01@gmail.com"
                 className="text-blue-600 underline"
               >
-                afsalonline01@gmail.com
+                ✉️ Gmail
+              </a>{" "}
+              <a
+                href="mailto:afsalonline01@gmail.com"
+                className="text-blue-600 underline"
+              >
+                <a href="https://afslm.vercel.app/">|🌐 Website</a>
               </a>{" "}
               | Jln Raya Ciracas Gg Bangi 1
+
             </p>
           </header>
 
@@ -48,7 +55,7 @@ const CV = () => {
           <section className="mb-6 text-xs sm:text-sm leading-relaxed">
             <p>
               Saya adalah lulusan Sistem Informasi dari Universitas Bina Sarana
-              Informatika dengan IPK 3,90/4,00. Memiliki minat besar di bidang
+              Informatika dengan IPK 3,86/4,00. Memiliki minat besar di bidang
               teknologi informasi dan pengalaman magang sebagai Full Stack
               Developer, Software Tester, serta IT Support. Selain itu, saya
               telah menyelesaikan beberapa pelatihan dan sertifikasi di bidang
@@ -64,7 +71,7 @@ const CV = () => {
             <p className="font-semibold text-sm sm:text-base">
               Universitas Bina Sarana Informatika | Sistem Informasi
             </p>
-            <p className="text-xs sm:text-sm">IPK: 3,90 / 4,00 (2021 - 2025)</p>
+            <p className="text-xs sm:text-sm">IPK: 3,86 / 4,00 (2021 - 2025)</p>
           </section>
 
          

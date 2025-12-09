@@ -6,11 +6,11 @@ const CV = () => {
     <div className="relative px-4 sm:px-6 lg:px-8">
       <style>{`
         .hide-scrollbar {
-          -ms-overflow-style: none;  /* IE, Edge */
-          scrollbar-width: none;     /* Firefox */
+          -ms-overflow-style: none; 
+          scrollbar-width: none;
         }
         .hide-scrollbar::-webkit-scrollbar {
-          display: none;             /* Chrome, Safari, Opera */
+          display: none;
         }
       `}</style>
       <div className="block sm:hidden">
@@ -29,21 +29,28 @@ const CV = () => {
               AFSAL MAULANA
             </h1>
             <p className="mt-2 text-xs sm:text-sm">
-              081387272911 |{" "}
+              |📞 081387272911 |{" "}
               <a
                 href="mailto:afsalonline01@gmail.com"
                 className="text-blue-600 underline"
               >
-                afsalonline01@gmail.com
+                ✉️ Gmail
               </a>{" "}
-              | Jl. Raya Ciracas Gg Bangi 1
+              <a
+                href="mailto:afsalonline01@gmail.com"
+                className="text-blue-600 underline"
+              >
+                <a href="https://afslm.vercel.app/">|🌐 Website</a>
+              </a>{" "}
+              | Jln Raya Ciracas Gg Bangi 1
+
             </p>
           </header>
 
           <section className="mb-6 text-xs sm:text-sm leading-relaxed">
             <p>
               I am a graduate in Information Systems from Universitas Bina
-              Sarana Informatika with a GPA of 3.90/4.00. I have a strong
+              Sarana Informatika with a GPA of 3.86/4.00. I have a strong
               passion for information technology and hands-on internship
               experience as a Full Stack Developer, Software Tester, and IT
               Support. Additionally, I have completed several training programs
@@ -58,7 +65,7 @@ const CV = () => {
             <p className="font-semibold text-sm sm:text-base">
               Universitas Bina Sarana Informatika | Information Systems
             </p>
-            <p className="text-xs sm:text-sm">GPA: 3.90 / 4.00 (2021 - 2025)</p>
+            <p className="text-xs sm:text-sm">GPA: 3.86 / 4.00 (2021 - 2025)</p>
           </section>
 
           <section className="mb-6">
