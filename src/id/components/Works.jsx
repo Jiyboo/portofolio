@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { github, link } from "../assets";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { projects, tagLinks  } from "../constants";
+import { projects } from "../constants";
 
 const ProjectCard = ({ project, position }) => {
   const baseStyle =
-    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px] select-none"; 
+    "bg-tertiary p-5 rounded-2xl w-[280px] sm:w-[320px] mx-[-40px] select-none"; // biar gak highlight pas drag
 
   let xPos = 0;
   let scale = 0.85;
@@ -71,18 +71,14 @@ const ProjectCard = ({ project, position }) => {
           </p>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag, index) => {
-            const url = tagLinks[tag.name.toLowerCase()];
-            return (
-              <button
-                key={`${project.name}-${tag.name}-${index}`}
-                onClick={() => url && window.open(url, "_blank")}
-                className={`text-[14px] ${tag.color} hover:underline cursor-pointer`}
-              >
-                #{tag.name}
-              </button>
-              );
-          })}        
+          {project.tags.map((tag, index) => (
+            <p
+              key={`${project.name}-${tag.name}-${index}`}
+              className={`text-[14px] ${tag.color}`}
+            >
+              #{tag.name}
+            </p>
+          ))}
         </div>
       </motion.div>
     </Tilt>
@@ -126,6 +122,7 @@ const Works = () => {
     setDragEnd(info.point.x);
     const dragDistance = info.point.x - dragStart;
 
+    // Deteksi arah swipe
     if (dragDistance > 100) {
       prevSlide();
     } else if (dragDistance < -100) {
@@ -139,15 +136,17 @@ const Works = () => {
   return (
     <>
       <div>
-        <p className={styles.sectionSubText}>Portfolio Showcase</p>
-        <h2 className={styles.sectionHeadText}>Projects</h2>
-      </div>
-      <div className="w-full flex">
-        <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-          I have developed a variety of projects during my studies and internship,
-          such as student and warehouse management applications. These experiences
-          helped me strengthen technical expertise and real-world problem-solving.
-        </p>
+ <p className={styles.sectionSubText}>Portofolio</p>
+  <h2 className={styles.sectionHeadText}>Proyek</h2>
+</div>
+<div className="w-full flex">
+  <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
+    Saya telah mengembangkan berbagai proyek selama masa studi dan magang, 
+    mulai dari aplikasi manajemen mahasiswa hingga sistem manajemen gudang. 
+    Proyek-proyek ini memberikan saya kesempatan untuk memperkuat keahlian teknis, 
+    mengasah kemampuan pemecahan masalah, serta memperoleh pengalaman langsung 
+    dalam membangun solusi perangkat lunak yang aplikatif di dunia nyata.
+  </p>
       </div>
 
       <div className="w-full flex justify-center items-center mt-10 relative overflow-hidden">

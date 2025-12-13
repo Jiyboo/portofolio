@@ -36,7 +36,7 @@ import {
 } from '../assets'
 
 
-
+import Puninar from "../assets/company/Puninar.png";
 import Vocasia from "../assets/company/Vocasia.png";
 import Depok from "../assets/company/Depok.png";
 import Askrindo from "../assets/company/Askrindo.png";
@@ -153,6 +153,16 @@ const technologies = [
 ];
 
 const experiences = [
+  {
+  title: "IT Functional",
+  company_name: "PT Puninar Jaya",
+  icon: Puninar,
+  iconBg: "#383E56",
+  date: "Dec 2025 - Present",
+  comingSoon: true,
+  points: [],
+},
+
   {
     title: "Full Stack",
     company_name: "Kantor Walikota Depok",
