@@ -170,6 +170,7 @@ const experiences = [
     icon: Depok,
     iconBg: "#383E56",
     date: "Nov 2024 - Jan 2025",
+    comingSoon: false,
     points: [
       "Design, develop, and maintain a public complaint management fullstacksite using pure PHP, ensuring secure data handling and a user-friendly interface for citizens to submit and track complaints.",
       "Build and manage a student information management system using CodeIgniter 4, including modules for student data processing, reporting, and administrative workflows.",
@@ -184,6 +185,7 @@ const experiences = [
     icon: Vocasia,
     iconBg: "#383E56",
     date: "Feb 2024 - Jul 2024",
+    comingSoon: false,
     points: [
       "Conduct manual testing to ensure that new features and existing functionalities meet specified requirements and quality standards.",
       "Perform automated testing using Cypress and other relevant tools to validate application stability and performance.",
@@ -199,6 +201,7 @@ const experiences = [
     icon: Askrindo,
     iconBg: "#383E56",
     date: "Jan 2020 - Mar 2020",
+    comingSoon: false,
     points: [
       "Assisted in the configuration, maintenance, and monitoring of servers, ensuring stable and secure operation.",
       "Assembled and upgraded desktop computers and performed hardware installations as required.",

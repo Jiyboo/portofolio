@@ -169,6 +169,7 @@ const experiences = [
     icon: Depok,
     iconBg: "#383E56",
     date: "Nov 2024 - Jan 2025",
+    comingSoon: false,
     points: [
       "Merancang, mengembangkan, dan memelihara sistem manajemen pengaduan masyarakat berbasis fullstack menggunakan PHP murni, dengan fokus pada keamanan data serta antarmuka yang ramah pengguna untuk memudahkan masyarakat dalam menyampaikan dan memantau pengaduan.",
       "Membangun dan mengelola sistem manajemen informasi mahasiswa menggunakan CodeIgniter 4, termasuk modul untuk pengolahan data mahasiswa, pelaporan, dan alur kerja administrasi.",
@@ -183,6 +184,7 @@ const experiences = [
     icon: Vocasia,
     iconBg: "#383E56",
     date: "Feb 2024 - Jul 2024",
+    comingSoon: false,
     points: [
       "Melakukan pengujian manual untuk memastikan fitur baru maupun fungsionalitas yang sudah ada sesuai dengan kebutuhan dan standar kualitas yang ditentukan.",
       "Melaksanakan pengujian otomatis menggunakan Cypress dan berbagai tools terkait untuk memvalidasi stabilitas serta performa aplikasi.",
@@ -198,6 +200,7 @@ const experiences = [
     icon: Askrindo,
     iconBg: "#383E56",
     date: "Jan 2020 - Mar 2020",
+    comingSoon: false,
     points: [
       "Mendukung konfigurasi, pemeliharaan, serta pemantauan server untuk memastikan operasional yang stabil dan aman.",
       "Merakit serta melakukan upgrade komputer desktop, termasuk instalasi perangkat keras sesuai kebutuhan.",
