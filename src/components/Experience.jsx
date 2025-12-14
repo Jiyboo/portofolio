@@ -121,7 +121,7 @@ const ExperienceCard = ({ experience, isOpen, onToggle }) => {
     </h4>
 
     <p className="text-blue-100/80 text-[14px] max-w-xs leading-relaxed">
-      Project details will be updated during my internship period.
+      Project details are not yet available. Please stay tuned for further updates.
     </p>
   </motion.div>
 ) : (
