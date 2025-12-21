@@ -4,7 +4,6 @@ import {
 } from "./components";
 import Footer from "./components/Footer";
 
-// import versi bahasa Indonesia
 import {
   About as AboutID,
   Resume as ResumeID,
@@ -17,7 +16,7 @@ import {
   Footer as FooterID,
 } from "./id";
 
-import StarsCanvas from "./components/canvas/Stars"; // kalau canvas sama bisa share
+import StarsCanvas from "./components/canvas/Stars";
 
 const EnglishLayout = () => (
   <div className="relative z-0 bg-primary">
