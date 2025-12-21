@@ -773,3 +773,65 @@ li:hover .nav-text {
   transform: translateX(0) scale(1) !important;
   filter: blur(0) !important;
 }
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.loader-ring {
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+
+.loader-ring svg {
+  transform: rotate(-90deg);
+}
+
+
+.loader-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(14px);
+  background: radial-gradient(
+    circle,
+    rgba(79, 209, 197, 0.5),
+    transparent 70%
+  );
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+.loader-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(79, 209, 197, 0.8);
+}
+
+.loader-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
