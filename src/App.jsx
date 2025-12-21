@@ -4,6 +4,7 @@ import {
 } from "./components";
 import Footer from "./components/Footer";
 
+
 import {
   About as AboutID,
   Resume as ResumeID,
@@ -58,10 +59,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Default English */}
         <Route path="/" element={<EnglishLayout />} />
-
-        {/* Indonesian */}
         <Route path="/id" element={<IndonesiaLayout />} />
       </Routes>
     </BrowserRouter>
