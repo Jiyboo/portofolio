@@ -139,8 +139,8 @@ const Works = () => {
   return (
     <>
       <div>
-        <p className={styles.sectionSubText}>Portfolio Showcase</p>
-        <h2 className={styles.sectionHeadText}>Projects</h2>
+<p className={styles.sectionSubText}>Portofolio Proyek</p>
+<h2 className={styles.sectionHeadText}>Proyek yang Telah Saya Kerjakan</h2>
       </div>
       <div className="w-full flex">
         <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
