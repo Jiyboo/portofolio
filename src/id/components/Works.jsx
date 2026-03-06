@@ -144,10 +144,11 @@ const Works = () => {
       </div>
       <div className="w-full flex">
         <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-          I have developed a variety of projects during my studies and internship,
-          such as student and warehouse management applications. These experiences
-          helped me strengthen technical expertise and real-world problem-solving.
-        </p>
+        Selama masa studi dan program magang, saya telah mengembangkan berbagai proyek,
+        seperti aplikasi manajemen siswa dan sistem pengelolaan gudang. Pengalaman tersebut
+        membantu saya memperkuat kemampuan teknis sekaligus meningkatkan keterampilan
+        dalam memecahkan permasalahan di dunia nyata.
+      </p>
       </div>
 
       <div className="w-full flex justify-center items-center mt-10 relative overflow-hidden">
