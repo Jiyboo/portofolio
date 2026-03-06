@@ -160,7 +160,15 @@ const experiences = [
   iconBg: "#383E56",
   date: "Dec 2025 - Present",
   comingSoon: true,
-  points: [],
+  points: [
+  "Melakukan monitoring, pengecekan data, serta analisis terhadap data operasional untuk memastikan akurasi informasi dan mendukung proses pengambilan keputusan yang lebih efektif.",
+  "Memberikan dukungan teknis (technical support) terhadap sistem dan website yang digunakan di lingkungan perusahaan, termasuk identifikasi masalah, troubleshooting, serta pemeliharaan sistem agar tetap berjalan optimal.",
+  "Merancang dan mengembangkan aplikasi web sebagai fullstack developer, mulai dari perancangan database, pengembangan backend, hingga implementasi antarmuka frontend.",
+  "Mengembangkan berbagai automasi menggunakan Macro untuk meningkatkan efisiensi pekerjaan, mempercepat proses pengolahan data, serta meminimalkan kesalahan manual.",
+  "Melakukan sosialisasi dan pendampingan kepada pengguna (user) terkait penggunaan sistem atau aplikasi yang dikembangkan agar dapat digunakan secara efektif dan sesuai dengan kebutuhan operasional.",
+  "Menyusun functional document sebagai spesifikasi sistem yang menjelaskan alur proses, kebutuhan fitur, serta struktur sistem sebagai acuan dalam proses pengembangan aplikasi.",
+  "Membuat manual guide atau dokumentasi penggunaan sistem untuk memudahkan pengguna dalam memahami serta mengoperasikan aplikasi yang telah dikembangkan."
+]
 },
 
   {

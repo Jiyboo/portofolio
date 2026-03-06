@@ -172,12 +172,14 @@ const experiences = [
     date: "Nov 2024 - Jan 2025",
     comingSoon: false,
     points: [
-      "Design, develop, and maintain a public complaint management fullstacksite using pure PHP, ensuring secure data handling and a user-friendly interface for citizens to submit and track complaints.",
-      "Build and manage a student information management system using CodeIgniter 4, including modules for student data processing, reporting, and administrative workflows.",
-      "Develop both front-end and back-end components, integrate databases, and ensure seamless communication between system modules.",
-      "Implement authentication, authorization, and data validation to maintain security and integrity of user information.",
-      "Optimize application performance and ensure compatibility across browsers and devices.",
-    ],
+  "Conduct monitoring, data checking, and analysis of operational data to ensure data accuracy and support effective decision-making processes.",
+  "Provide technical support for company websites and systems, including issue identification, troubleshooting, and system maintenance to ensure optimal performance.",
+  "Design and develop web applications as a fullstack developer, covering database design, backend development, and frontend implementation.",
+  "Develop automation solutions using Macros to improve work efficiency, accelerate data processing, and reduce manual errors.",
+  "Conduct user socialization and guidance sessions to help users understand and effectively utilize the systems or applications that have been developed.",
+  "Create functional documentation that outlines system specifications, workflows, and feature requirements as a reference for application development.",
+  "Develop user manual guides to assist users in understanding and operating the implemented systems or applications effectively."
+]
   },
   {
     title: "QA Engginer",
