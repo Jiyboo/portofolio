@@ -159,7 +159,7 @@ const experiences = [
   icon: Puninar,
   iconBg: "#383E56",
   date: "Dec 2025 - Present",
-  comingSoon: true,
+  comingSoon: false,
   points: [
   "Melakukan monitoring, pengecekan data, serta analisis terhadap data operasional untuk memastikan akurasi informasi dan mendukung proses pengambilan keputusan yang lebih efektif.",
   "Memberikan dukungan teknis (technical support) terhadap sistem dan website yang digunakan di lingkungan perusahaan, termasuk identifikasi masalah, troubleshooting, serta pemeliharaan sistem agar tetap berjalan optimal.",
