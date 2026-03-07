@@ -13,7 +13,8 @@ const Hero = () => {
   useEffect(() => {
     const typed = new Typed(typedEl.current, {
       strings: [
-        "Web Developer",
+        "Afsal Maulana",
+        "Pengembang Website",
         "UI/UX Designer",
         "Software Quality Assurance",
       ],
