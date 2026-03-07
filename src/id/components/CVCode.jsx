@@ -85,6 +85,7 @@ const CV = () => {
               </li>
               <li>Vocasia – Software Tester (Feb 2024 - Jun 2024)</li>
               <li>Askrindo – IT Support (Jan 2020 - Mar 2020)</li>
+              <li>Puninar Jaya – IT Functional (Des 2025 - Sekarang)</li>
             </ul>
           </section>
 
