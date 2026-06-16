@@ -159,7 +159,7 @@ const experiences = [
   company_name: "PT Puninar Jaya",
   icon: Puninar,
   iconBg: "#383E56",
-  date: "Dec 2025 - Present",
+  date: "Dec 2025 - Jun 2026",
   comingSoon: false,
   points: [
   "Conduct monitoring, data checking, and analysis of operational data to ensure data accuracy and support effective decision-making processes.",
