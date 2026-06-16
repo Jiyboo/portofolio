@@ -20,15 +20,11 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 5173,
   },
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
   build: {
     target: "esnext",
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
