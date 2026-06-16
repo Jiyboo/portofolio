@@ -1,15 +1,26 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import Typed from "typed.js";
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+
+const ComputersCanvas = lazy(() =>
+  import("./canvas").then((module) => ({ default: module.ComputersCanvas }))
+);
 
 const Hero = () => {
   const typedEl = useRef(null);
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
+  const [isCanvasLoaded, setIsCanvasLoaded] = useState(false);
 
-  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCanvasLoaded(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const typed = new Typed(typedEl.current, {
       strings: [
@@ -26,7 +37,6 @@ const Hero = () => {
     return () => typed.destroy();
   }, []);
 
-  
   useEffect(() => {
     const element = heroRef.current;
     if (!element) return;
@@ -67,7 +77,6 @@ const Hero = () => {
     };
   }, []);
 
-  
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -79,7 +88,6 @@ const Hero = () => {
     const rows = Math.ceil(height / size);
     const grid = [];
 
-    
     for (let x = 0; x < cols; x++) {
       for (let y = 0; y < rows; y++) {
         grid.push({
@@ -97,7 +105,6 @@ const Hero = () => {
       });
     };
 
-    
     let glitchActive = false;
     let glitchTime = 0;
 
@@ -112,7 +119,6 @@ const Hero = () => {
         ctx.putImageData(imgData, offset, y);
       }
 
-      
       ctx.globalCompositeOperation = "screen";
       ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
       ctx.fillRect(0, 0, width, height);
@@ -127,7 +133,6 @@ const Hero = () => {
         ctx.fillRect(cell.x, cell.y, size, size);
       });
 
-      
       if (glitchActive) {
         drawGlitch();
         if (time - glitchTime > 300 + Math.random() * 200) {
@@ -140,21 +145,30 @@ const Hero = () => {
     };
 
     let lastChange = 0;
+    let animationFrameId;
+
     const animate = (time) => {
       if (time - lastChange > 300) {
         randomizeTargets();
         lastChange = time;
       }
       draw(time);
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
 
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -162,13 +176,11 @@ const Hero = () => {
       ref={heroRef}
       className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]"
     >
-      
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
       ></canvas>
 
-      
       <motion.svg
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -195,7 +207,6 @@ const Hero = () => {
         </g>
       </motion.svg>
 
-      
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -227,15 +238,15 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      
-      <ComputersCanvas />
+      <Suspense fallback={null}>
+        {isCanvasLoaded && <ComputersCanvas />}
+      </Suspense>
 
-      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center"
+        className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10"
       >
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
