@@ -28,29 +28,25 @@ const Hero = () => {
     if (!isMobile) {
       const timer = setTimeout(() => {
         setIsCanvasLoaded(true);
-      }, 1500);
+      }, 2500);
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const typed = new Typed(typedEl.current, {
-        strings: [
-          "Afsal Maulana",
-          "a Web Developer",
-          "a UI/UX Enthusiast",
-          "Quality Assurance",
-        ],
-        typeSpeed: 70,
-        backSpeed: 50,
-        backDelay: 1500,
-        loop: true,
-      });
-      return () => typed.destroy();
-    }, 300);
-
-    return () => clearTimeout(timer);
+    const typed = new Typed(typedEl.current, {
+      strings: [
+        "Afsal Maulana",
+        "a Web Developer",
+        "a UI/UX Enthusiast",
+        "Quality Assurance",
+      ],
+      typeSpeed: 70,
+      backSpeed: 50,
+      backDelay: 1500,
+      loop: true,
+    });
+    return () => typed.destroy();
   }, []);
 
   useEffect(() => {
@@ -153,7 +149,7 @@ const Hero = () => {
 
     startTimeoutId = setTimeout(() => {
       animationFrameId = requestAnimationFrame(animate);
-    }, 1000);
+    }, 2000);
 
     const handleResizeCanvas = () => {
       width = canvas.width = window.innerWidth;
@@ -211,22 +207,12 @@ const Hero = () => {
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.1 }}
-          className="flex flex-col justify-center items-center mt-28 md:mt-5 lg:mt-5"
-        >
+        <div className="flex flex-col justify-center items-center mt-28 md:mt-5 lg:mt-5">
           <div className="w-5 h-5 rounded-full bg-[#2563EB]" />
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="mt-28 md:mt-5 lg:mt-5"
-        >
+        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[150px]">
           <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
             Hallo, I'm <span className="text-[#2563EB]" ref={typedEl}></span>
           </h1>
@@ -234,19 +220,14 @@ const Hero = () => {
             As a Web Developer with a degree in Information Systems, <br />
             I specialize in creating modern and professional web solutions
           </p>
-        </motion.div>
+        </div>
       </div>
 
       <Suspense fallback={null}>
         {isCanvasLoaded && !isMobile && <ComputersCanvas />}
       </Suspense>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10"
-      >
+      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10">
         <a href="#about" aria-label="Scroll to About">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
@@ -256,7 +237,7 @@ const Hero = () => {
             />
           </div>
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 };
