@@ -2,18 +2,24 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import { About, Resume, Experience, Hero, Navbar, Tech, Works } from "../components";
-import Footer from "../components/Footer";
-import {
-  About as AboutID,
-  Resume as ResumeID,
-  Experience as ExperienceID,
-  Hero as HeroID,
-  Navbar as NavbarID,
-  Tech as TechID,
-  Works as WorksID,
-  Footer as FooterID,
-} from "./index";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import NavbarID from "./Navbar";
+import HeroID from "./Hero";
+
+const About = lazy(() => import("../components/About"));
+const Experience = lazy(() => import("../components/Experience"));
+const Tech = lazy(() => import("../components/Tech"));
+const Works = lazy(() => import("../components/Works"));
+const Resume = lazy(() => import("../components/Resume"));
+const Footer = lazy(() => import("../components/Footer"));
+
+const AboutID = lazy(() => import("./About"));
+const ExperienceID = lazy(() => import("./Experience"));
+const TechID = lazy(() => import("./Tech"));
+const WorksID = lazy(() => import("./Works"));
+const ResumeID = lazy(() => import("./Resume"));
+const FooterID = lazy(() => import("./Footer"));
 
 const StarsCanvas = lazy(() => import("../components/canvas/Stars"));
 
@@ -29,16 +35,18 @@ const EnglishLayout = () => {
         <Navbar />
         <section id="hero"><Hero /></section>
       </div>
-      <section id="about"><About /></section>
-      <section id="experience"><Experience /></section>
-      <section id="tech"><Tech /></section>
-      <section id="works"><Works /></section>
+      <Suspense fallback={<div className="h-[40vh]" />}>
+        <section id="about"><About /></section>
+        <section id="experience"><Experience /></section>
+        <section id="tech"><Tech /></section>
+        <section id="works"><Works /></section>
+      </Suspense>
       <section id="resume" className="relative z-0" ref={ref}>
-        <Resume />
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="h-[40vh]" />}>
+          <Resume />
           {inView && <StarsCanvas />}
+          <Footer />
         </Suspense>
-        <Footer />
       </section>
     </div>
   );
@@ -56,16 +64,18 @@ const IndonesiaLayout = () => {
         <NavbarID />
         <section id="hero"><HeroID /></section>
       </div>
-      <section id="about"><AboutID /></section>
-      <section id="experience"><ExperienceID /></section>
-      <section id="tech"><TechID /></section>
-      <section id="works"><WorksID /></section>
+      <Suspense fallback={<div className="h-[40vh]" />}>
+        <section id="about"><AboutID /></section>
+        <section id="experience"><ExperienceID /></section>
+        <section id="tech"><TechID /></section>
+        <section id="works"><WorksID /></section>
+      </Suspense>
       <section id="resume" className="relative z-0" ref={ref}>
-        <ResumeID />
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="h-[40vh]" />}>
+          <ResumeID />
           {inView && <StarsCanvas />}
+          <FooterID />
         </Suspense>
-        <FooterID />
       </section>
     </div>
   );
