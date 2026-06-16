@@ -8,14 +8,17 @@ export default defineConfig({
     port: 5173,
   },
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          three: [
-            "three",
-            "@react-three/fiber",
-            "@react-three/drei",
-          ],
+        manualChunks: (id) => {
+          if (id.includes("node_modules")) {
+            if (id.includes("three")) return "vendor-three";
+            if (id.includes("@react-three")) return "vendor-r3f";
+            if (id.includes("framer-motion")) return "vendor-framer";
+            if (id.includes("react-router-dom") || id.includes("react-router")) return "vendor-router";
+            return "vendor";
+          }
         },
       },
     },
