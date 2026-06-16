@@ -11,14 +11,11 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes("node_modules")) {
-            if (id.includes("three")) return "vendor-three";
-            if (id.includes("@react-three")) return "vendor-r3f";
-            if (id.includes("framer-motion")) return "vendor-framer";
-            if (id.includes("react-router-dom") || id.includes("react-router")) return "vendor-router";
-            return "vendor";
-          }
+        manualChunks: {
+          react: ["react", "react-dom"],
+          three: ["three", "@react-three/fiber", "@react-three/drei"],
+          framer: ["framer-motion"],
+          router: ["react-router-dom"],
         },
       },
     },
