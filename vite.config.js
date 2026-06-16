@@ -8,10 +8,12 @@ export default defineConfig({
     viteCompression({
       algorithm: "brotliCompress",
       ext: ".br",
+      threshold: 1024,
     }),
     viteCompression({
       algorithm: "gzip",
       ext: ".gz",
+      threshold: 1024,
     }),
   ],
   server: {
@@ -19,6 +21,14 @@ export default defineConfig({
     port: 5173,
   },
   build: {
+    target: "esnext",
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
@@ -27,6 +37,7 @@ export default defineConfig({
           three: ["three", "@react-three/fiber", "@react-three/drei"],
           framer: ["framer-motion"],
           router: ["react-router-dom"],
+          vendor: ["typed.js"],
         },
       },
     },

@@ -12,34 +12,45 @@ const Hero = () => {
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
   const [isCanvasLoaded, setIsCanvasLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => 
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false
+  );
 
   useEffect(() => {
-    const checkMobile = window.innerWidth <= 768;
-    setIsMobile(checkMobile);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    if (!checkMobile) {
+  useEffect(() => {
+    if (!isMobile) {
       const timer = setTimeout(() => {
         setIsCanvasLoaded(true);
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
-    const typed = new Typed(typedEl.current, {
-      strings: [
-        "Afsal Maulana",
-        "a Web Developer",
-        "a UI/UX Enthusiast",
-        "Quality Assurance",
-      ],
-      typeSpeed: 70,
-      backSpeed: 50,
-      backDelay: 1500,
-      loop: true,
-    });
-    return () => typed.destroy();
+    const timer = setTimeout(() => {
+      const typed = new Typed(typedEl.current, {
+        strings: [
+          "Afsal Maulana",
+          "a Web Developer",
+          "a UI/UX Enthusiast",
+          "Quality Assurance",
+        ],
+        typeSpeed: 70,
+        backSpeed: 50,
+        backDelay: 1500,
+        loop: true,
+      });
+      return () => typed.destroy();
+    }, 300);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -55,10 +66,7 @@ const Hero = () => {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isMobile]);
 
   useEffect(() => {
@@ -102,11 +110,9 @@ const Hero = () => {
         const sliceHeight = 20 + Math.random() * 100;
         const y = Math.random() * height;
         const offset = (Math.random() - 0.5) * 60;
-
         const imgData = ctx.getImageData(0, y, width, sliceHeight);
         ctx.putImageData(imgData, offset, y);
       }
-
       ctx.globalCompositeOperation = "screen";
       ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
       ctx.fillRect(0, 0, width, height);
@@ -149,17 +155,17 @@ const Hero = () => {
       animationFrameId = requestAnimationFrame(animate);
     }, 1000);
 
-    const handleResize = () => {
+    const handleResizeCanvas = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResizeCanvas);
 
     return () => {
       clearTimeout(startTimeoutId);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResizeCanvas);
     };
   }, [isMobile]);
 
@@ -208,7 +214,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 1, delay: 0.1 }}
           className="flex flex-col justify-center items-center mt-28 md:mt-5 lg:mt-5"
         >
           <div className="w-5 h-5 rounded-full bg-[#2563EB]" />
@@ -218,7 +224,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          transition={{ duration: 1, delay: 0.2 }}
           className="mt-28 md:mt-5 lg:mt-5"
         >
           <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
@@ -241,7 +247,7 @@ const Hero = () => {
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10"
       >
-        <a href="#about">
+        <a href="#about" aria-label="Scroll to About">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
               animate={{ y: [0, 24, 0] }}
