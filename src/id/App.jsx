@@ -2,25 +2,20 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-const Navbar = lazy(() => import("./components").then((m) => ({ default: m.Navbar })));
-const Hero = lazy(() => import("./components").then((m) => ({ default: m.Hero })));
-const About = lazy(() => import("./components").then((m) => ({ default: m.About })));
-const Experience = lazy(() => import("./components").then((m) => ({ default: m.Experience })));
-const Tech = lazy(() => import("./components").then((m) => ({ default: m.Tech })));
-const Works = lazy(() => import("./components").then((m) => ({ default: m.Works })));
-const Resume = lazy(() => import("./components").then((m) => ({ default: m.Resume })));
-const Footer = lazy(() => import("./components/Footer"));
+import { About, Resume, Experience, Hero, Navbar, Tech, Works } from "../components";
+import Footer from "../components/Footer";
+import {
+  About as AboutID,
+  Resume as ResumeID,
+  Experience as ExperienceID,
+  Hero as HeroID,
+  Navbar as NavbarID,
+  Tech as TechID,
+  Works as WorksID,
+  Footer as FooterID,
+} from "./index";
 
-const NavbarID = lazy(() => import("./id").then((m) => ({ default: m.Navbar })));
-const HeroID = lazy(() => import("./id").then((m) => ({ default: m.Hero })));
-const AboutID = lazy(() => import("./id").then((m) => ({ default: m.About })));
-const ExperienceID = lazy(() => import("./id").then((m) => ({ default: m.Experience })));
-const TechID = lazy(() => import("./id").then((m) => ({ default: m.Tech })));
-const WorksID = lazy(() => import("./id").then((m) => ({ default: m.Works })));
-const ResumeID = lazy(() => import("./id").then((m) => ({ default: m.Resume })));
-const FooterID = lazy(() => import("./id").then((m) => ({ default: m.Footer })));
-
-const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
+const StarsCanvas = lazy(() => import("../components/canvas/Stars"));
 
 const EnglishLayout = () => {
   const { ref, inView } = useInView({
@@ -40,7 +35,9 @@ const EnglishLayout = () => {
       <section id="works"><Works /></section>
       <section id="resume" className="relative z-0" ref={ref}>
         <Resume />
-        {inView && <StarsCanvas />}
+        <Suspense fallback={null}>
+          {inView && <StarsCanvas />}
+        </Suspense>
         <Footer />
       </section>
     </div>
@@ -65,7 +62,9 @@ const IndonesiaLayout = () => {
       <section id="works"><WorksID /></section>
       <section id="resume" className="relative z-0" ref={ref}>
         <ResumeID />
-        {inView && <StarsCanvas />}
+        <Suspense fallback={null}>
+          {inView && <StarsCanvas />}
+        </Suspense>
         <FooterID />
       </section>
     </div>
@@ -75,12 +74,10 @@ const IndonesiaLayout = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="w-full h-screen bg-primary" />}>
-        <Routes>
-          <Route path="/" element={<EnglishLayout />} />
-          <Route path="/id" element={<IndonesiaLayout />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<EnglishLayout />} />
+        <Route path="/id" element={<IndonesiaLayout />} />
+      </Routes>
     </BrowserRouter>
   );
 };

@@ -3,9 +3,7 @@ import { motion } from "framer-motion";
 import Typed from "typed.js";
 import { styles } from "../styles";
 
-const ComputersCanvas = lazy(() =>
-  import("../components/canvas").then((module) => ({ default: module.ComputersCanvas }))
-);
+const ComputersCanvas = lazy(() => import("../components/canvas/Computers"));
 
 const Hero = () => {
   const typedEl = useRef(null);
@@ -17,18 +15,14 @@ const Hero = () => {
   );
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (!isMobile) {
-      const timer = setTimeout(() => {
-        setIsCanvasLoaded(true);
-      }, 2500);
+      const timer = setTimeout(() => setIsCanvasLoaded(true), 2500);
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
@@ -48,14 +42,13 @@ const Hero = () => {
         loop: true,
       });
       return () => typed.destroy();
-    }, 300);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (isMobile) return;
-
     const element = heroRef.current;
     if (!element) return;
 
@@ -71,7 +64,6 @@ const Hero = () => {
 
   useEffect(() => {
     if (isMobile) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -170,15 +162,9 @@ const Hero = () => {
   }, [isMobile]);
 
   return (
-    <section
-      ref={heroRef}
-      className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]"
-    >
+    <section ref={heroRef} className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]">
       {!isMobile && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full pointer-events-none"
-        ></canvas>
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none"></canvas>
       )}
 
       {!isMobile && (
@@ -208,15 +194,13 @@ const Hero = () => {
         </motion.svg>
       )}
 
-      <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
-      >
+      <div className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
         <div className="flex flex-col justify-center items-center mt-28 md:mt-5 lg:mt-5">
           <div className="w-5 h-5 rounded-full bg-[#2563EB]" />
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[150px]">
+        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[150px] z-10">
           <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
             Hallo, Saya <span className="text-[#2563EB]" ref={typedEl}></span>
           </h1>
@@ -231,7 +215,7 @@ const Hero = () => {
         {isCanvasLoaded && !isMobile && <ComputersCanvas />}
       </Suspense>
 
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10">
+      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-20">
         <a href="#about" aria-label="Scroll to About">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
