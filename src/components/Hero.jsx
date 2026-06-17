@@ -42,7 +42,7 @@ const Hero = () => {
         backDelay: 1500,
         loop: true,
       });
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(timer);
@@ -55,7 +55,7 @@ const Hero = () => {
     if (!element) return;
 
     const handleMouseMove = (e) => {
-      if (isMobile) return;
+      if (window.innerWidth <= 768) return;
       const moveX = (e.clientX / window.innerWidth - 0.5) * 30;
       const moveY = (e.clientY / window.innerHeight - 0.5) * 30;
       element.style.transform = `translate(${moveX}px, ${moveY}px)`;
@@ -75,7 +75,7 @@ const Hero = () => {
     const ctx = canvas.getContext("2d");
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    const size = isMobile ? 150 : 80;
+    const size = window.innerWidth <= 768 ? 140 : 80;
 
     const cols = Math.ceil(width / size);
     const rows = Math.ceil(height / size);
@@ -128,7 +128,7 @@ const Hero = () => {
       });
 
       if (glitchActive) {
-        drawGlitch();
+        if (window.innerWidth > 768) drawGlitch();
         if (time - glitchTime > 300 + Math.random() * 200) {
           glitchActive = false;
         }
@@ -140,7 +140,7 @@ const Hero = () => {
 
     let lastChange = 0;
     let animationFrameId;
-    let startTimeoutId;
+    let timeoutId;
 
     const animate = (time) => {
       if (time - lastChange > 300) {
@@ -148,13 +148,20 @@ const Hero = () => {
         lastChange = time;
       }
       draw(time);
-      animationFrameId = requestAnimationFrame(animate);
+
+      if (window.innerWidth <= 768) {
+        timeoutId = setTimeout(() => {
+          animationFrameId = requestAnimationFrame(animate);
+        }, 100);
+      } else {
+        animationFrameId = requestAnimationFrame(animate);
+      }
     };
 
-    startTimeoutId = setTimeout(() => {
+    const startDelayId = setTimeout(() => {
       initGrid();
       animationFrameId = requestAnimationFrame(animate);
-    }, 3000);
+    }, 2000);
 
     const handleResizeCanvas = () => {
       width = canvas.width = window.innerWidth;
@@ -165,11 +172,12 @@ const Hero = () => {
     window.addEventListener("resize", handleResizeCanvas);
 
     return () => {
-      clearTimeout(startTimeoutId);
+      clearTimeout(startDelayId);
+      clearTimeout(timeoutId);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResizeCanvas);
     };
-  }, [isMobile]);
+  }, []);
 
   return (
     <section ref={heroRef} className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]">
