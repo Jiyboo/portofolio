@@ -2,26 +2,26 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import NavbarID from "./Navbar";
-import HeroID from "./Hero";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import NavbarID from "./id/Navbar";
+import HeroID from "./id/Hero";
 
-const About = lazy(() => import("../components/About"));
-const Experience = lazy(() => import("../components/Experience"));
-const Tech = lazy(() => import("../components/Tech"));
-const Works = lazy(() => import("../components/Works"));
-const Resume = lazy(() => import("../components/Resume"));
-const Footer = lazy(() => import("../components/Footer"));
+const About = lazy(() => import("./components/About"));
+const Experience = lazy(() => import("./components/Experience"));
+const Tech = lazy(() => import("./components/Tech"));
+const Works = lazy(() => import("./components/Works"));
+const Resume = lazy(() => import("./components/Resume"));
+const Footer = lazy(() => import("./components/Footer"));
 
-const AboutID = lazy(() => import("./About"));
-const ExperienceID = lazy(() => import("./Experience"));
-const TechID = lazy(() => import("./Tech"));
-const WorksID = lazy(() => import("./Works"));
-const ResumeID = lazy(() => import("./Resume"));
-const FooterID = lazy(() => import("./Footer"));
+const AboutID = lazy(() => import("./id/About"));
+const ExperienceID = lazy(() => import("./id/Experience"));
+const TechID = lazy(() => import("./id/Tech"));
+const WorksID = lazy(() => import("./id/Works"));
+const ResumeID = lazy(() => import("./id/Resume"));
+const FooterID = lazy(() => import("./id/Footer"));
 
-const StarsCanvas = lazy(() => import("../components/canvas/Stars"));
+const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
 const EnglishLayout = () => {
   const { ref, inView } = useInView({

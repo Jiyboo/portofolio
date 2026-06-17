@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState, Suspense, lazy } from "react";
-import { motion } from "framer-motion";
-import Typed from "typed.js";
 import { styles } from "../styles";
 
 const ComputersCanvas = lazy(() => import("../components/canvas/Computers"));
@@ -22,14 +20,17 @@ const Hero = () => {
 
   useEffect(() => {
     if (!isMobile) {
-      const timer = setTimeout(() => setIsCanvasLoaded(true), 2500);
+      const timer = setTimeout(() => setIsCanvasLoaded(true), 3500);
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const typed = new Typed(typedEl.current, {
+    let typed;
+    const timer = setTimeout(async () => {
+      const { default: Typed } = await import("typed.js");
+      if (!typedEl.current) return;
+      typed = new Typed(typedEl.current, {
         strings: [
           "Afsal Maulana",
           "Pengembang Website",
@@ -41,10 +42,12 @@ const Hero = () => {
         backDelay: 1500,
         loop: true,
       });
-      return () => typed.destroy();
-    }, 100);
+    }, 500);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (typed) typed.destroy();
+    };
   }, []);
 
   useEffect(() => {
@@ -62,9 +65,7 @@ const Hero = () => {
       window.addEventListener("mousemove", handleMouseMove);
     }
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isMobile]);
 
   useEffect(() => {
@@ -74,22 +75,25 @@ const Hero = () => {
     const ctx = canvas.getContext("2d");
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    const size = isMobile ? 120 : 80;
+    const size = isMobile ? 150 : 80;
 
     const cols = Math.ceil(width / size);
     const rows = Math.ceil(height / size);
-    const grid = [];
+    let grid = [];
 
-    for (let x = 0; x < cols; x++) {
-      for (let y = 0; y < rows; y++) {
-        grid.push({
-          x: x * size,
-          y: y * size,
-          alpha: Math.random() * 0.2,
-          targetAlpha: 0,
-        });
+    const initGrid = () => {
+      grid = [];
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+          grid.push({
+            x: x * size,
+            y: y * size,
+            alpha: Math.random() * 0.2,
+            targetAlpha: 0,
+          });
+        }
       }
-    }
+    };
 
     const randomizeTargets = () => {
       grid.forEach((cell) => {
@@ -124,7 +128,7 @@ const Hero = () => {
       });
 
       if (glitchActive) {
-        drawGlitch();
+        if (!isMobile) drawGlitch();
         if (time - glitchTime > 300 + Math.random() * 200) {
           glitchActive = false;
         }
@@ -136,7 +140,7 @@ const Hero = () => {
 
     let lastChange = 0;
     let animationFrameId;
-    let startTimeoutId;
+    let timeoutId;
 
     const animate = (time) => {
       if (time - lastChange > 300) {
@@ -144,22 +148,32 @@ const Hero = () => {
         lastChange = time;
       }
       draw(time);
-      animationFrameId = requestAnimationFrame(animate);
+
+      if (isMobile) {
+        timeoutId = setTimeout(() => {
+          animationFrameId = requestAnimationFrame(animate);
+        }, 100);
+      } else {
+        animationFrameId = requestAnimationFrame(animate);
+      }
     };
 
-    startTimeoutId = setTimeout(() => {
+    const startDelayId = setTimeout(() => {
+      initGrid();
       animationFrameId = requestAnimationFrame(animate);
     }, 2000);
 
     const handleResizeCanvas = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      initGrid();
     };
 
     window.addEventListener("resize", handleResizeCanvas);
 
     return () => {
-      clearTimeout(startTimeoutId);
+      clearTimeout(startDelayId);
+      clearTimeout(timeoutId);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResizeCanvas);
     };
@@ -169,11 +183,8 @@ const Hero = () => {
     <section ref={heroRef} className="relative w-full h-screen mx-auto overflow-hidden hero bg-[#010409]">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none"></canvas>
 
-      <motion.svg
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="hero-wave absolute -left-[10%] -top-[5%] w-[135%] h-[135%] opacity-95 pointer-events-none mix-blend-screen animate-float-slow"
+      <svg
+        className="hero-wave absolute -left-[10%] -top-[5%] w-[135%] h-[135%] opacity-95 pointer-events-none mix-blend-screen animate-pulse"
         viewBox="0 0 1800 900"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +203,7 @@ const Hero = () => {
           <path d="M-200 680 C200 440 440 640 800 640 C1160 640 1400 440 1800 600" strokeOpacity="0.55" />
           <path d="M-200 710 C200 470 440 670 800 670 C1160 670 1400 470 1800 630" strokeOpacity="0.45" />
         </g>
-      </motion.svg>
+      </svg>
 
       <div className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
         <div className="flex flex-col justify-center items-center mt-28 md:mt-5 lg:mt-5">
@@ -200,7 +211,7 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[150px] z-10">
+        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[220px] z-10">
           <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
             Hallo, Saya <span className="text-[#2563EB]" ref={typedEl}></span>
           </h1>
@@ -218,11 +229,7 @@ const Hero = () => {
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-20">
         <a href="#about" aria-label="Scroll to About">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-            <motion.div
-              animate={{ y: [0, 24, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-            />
+            <div className="w-3 h-3 rounded-full bg-secondary mb-1 animate-bounce" />
           </div>
         </a>
       </div>
