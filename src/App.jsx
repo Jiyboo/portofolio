@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import { Navbar as NavbarID, Hero as HeroID } from "./id";
 
 const About = lazy(() => import("./components/About"));
 const Experience = lazy(() => import("./components/Experience"));
@@ -13,6 +12,8 @@ const Works = lazy(() => import("./components/Works"));
 const Resume = lazy(() => import("./components/Resume"));
 const Footer = lazy(() => import("./components/Footer"));
 
+const NavbarID = lazy(() => import("./id").then((m) => ({ default: m.Navbar })));
+const HeroID = lazy(() => import("./id").then((m) => ({ default: m.Hero })));
 const AboutID = lazy(() => import("./id").then((m) => ({ default: m.About })));
 const ExperienceID = lazy(() => import("./id").then((m) => ({ default: m.Experience })));
 const TechID = lazy(() => import("./id").then((m) => ({ default: m.Tech })));
@@ -59,10 +60,12 @@ const IndonesiaLayout = () => {
 
   return (
     <div className="relative z-0 bg-primary">
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <NavbarID />
-        <section id="hero"><HeroID /></section>
-      </div>
+      <Suspense fallback={<div className="h-[10vh]" />}>
+        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+          <NavbarID />
+          <section id="hero"><HeroID /></section>
+        </div>
+      </Suspense>
       <Suspense fallback={<div className="h-[40vh]" />}>
         <section id="about"><AboutID /></section>
         <section id="experience"><ExperienceID /></section>

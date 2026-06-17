@@ -22,7 +22,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (!isMobile) {
-      const timer = setTimeout(() => setIsCanvasLoaded(true), 2500);
+      const timer = setTimeout(() => setIsCanvasLoaded(true), 3500);
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
@@ -42,7 +42,7 @@ const Hero = () => {
         loop: true,
       });
       return () => typed.destroy();
-    }, 100);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -62,9 +62,7 @@ const Hero = () => {
       window.addEventListener("mousemove", handleMouseMove);
     }
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isMobile]);
 
   useEffect(() => {
@@ -74,22 +72,25 @@ const Hero = () => {
     const ctx = canvas.getContext("2d");
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    const size = isMobile ? 120 : 80;
+    const size = isMobile ? 150 : 80;
 
     const cols = Math.ceil(width / size);
     const rows = Math.ceil(height / size);
-    const grid = [];
+    let grid = [];
 
-    for (let x = 0; x < cols; x++) {
-      for (let y = 0; y < rows; y++) {
-        grid.push({
-          x: x * size,
-          y: y * size,
-          alpha: Math.random() * 0.2,
-          targetAlpha: 0,
-        });
+    const initGrid = () => {
+      grid = [];
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+          grid.push({
+            x: x * size,
+            y: y * size,
+            alpha: Math.random() * 0.2,
+            targetAlpha: 0,
+          });
+        }
       }
-    }
+    };
 
     const randomizeTargets = () => {
       grid.forEach((cell) => {
@@ -148,12 +149,14 @@ const Hero = () => {
     };
 
     startTimeoutId = setTimeout(() => {
+      initGrid();
       animationFrameId = requestAnimationFrame(animate);
     }, 2000);
 
     const handleResizeCanvas = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      initGrid();
     };
 
     window.addEventListener("resize", handleResizeCanvas);
@@ -170,9 +173,9 @@ const Hero = () => {
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none"></canvas>
 
       <motion.svg
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 1 }}
         className="hero-wave absolute -left-[10%] -top-[5%] w-[135%] h-[135%] opacity-95 pointer-events-none mix-blend-screen animate-float-slow"
         viewBox="0 0 1800 900"
         preserveAspectRatio="xMidYMid slice"
