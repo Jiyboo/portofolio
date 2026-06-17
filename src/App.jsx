@@ -4,8 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import NavbarID from "./id/Navbar";
-import HeroID from "./id/Hero";
+import { Navbar as NavbarID, Hero as HeroID } from "./id";
 
 const About = lazy(() => import("./components/About"));
 const Experience = lazy(() => import("./components/Experience"));
@@ -14,12 +13,12 @@ const Works = lazy(() => import("./components/Works"));
 const Resume = lazy(() => import("./components/Resume"));
 const Footer = lazy(() => import("./components/Footer"));
 
-const AboutID = lazy(() => import("./id/About"));
-const ExperienceID = lazy(() => import("./id/Experience"));
-const TechID = lazy(() => import("./id/Tech"));
-const WorksID = lazy(() => import("./id/Works"));
-const ResumeID = lazy(() => import("./id/Resume"));
-const FooterID = lazy(() => import("./id/Footer"));
+const AboutID = lazy(() => import("./id").then((m) => ({ default: m.About })));
+const ExperienceID = lazy(() => import("./id").then((m) => ({ default: m.Experience })));
+const TechID = lazy(() => import("./id").then((m) => ({ default: m.Tech })));
+const WorksID = lazy(() => import("./id").then((m) => ({ default: m.Works })));
+const ResumeID = lazy(() => import("./id").then((m) => ({ default: m.Resume })));
+const FooterID = lazy(() => import("./id").then((m) => ({ default: m.Footer })));
 
 const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
