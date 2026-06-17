@@ -200,7 +200,7 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[150px] z-10">
+        <div className="mt-28 md:mt-5 lg:mt-5 min-h-[180px] z-10">
           <h1 className={`${styles.heroHeadText} text-white text-4xl md:text-5xl`}>
             Hallo, I'm <span className="text-[#2563EB]" ref={typedEl}></span>
           </h1>
