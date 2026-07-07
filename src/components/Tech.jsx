@@ -13,7 +13,6 @@ const Tech = () => {
     const trackLeft = marqueeRef.current.querySelector(".marquee-track-left");
     const trackRight = marqueeRef.current.querySelector(".marquee-track-right");
     
-    // Menghitung lebar setengah track untuk masing-masing baris
     const trackWidthLeft = trackLeft.scrollWidth / 2;
     const trackWidthRight = trackRight.scrollWidth / 2;
 
@@ -50,18 +49,18 @@ const Tech = () => {
 
   const renderBox = (technology, isClone = false) => (
     <div 
-      className="w-40 h-16 mx-3 flex-shrink-0 bg-gray-200 border border-gray-400 rounded-lg flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors cursor-pointer" 
+      className="min-w-[130px] h-12 px-4 mx-3 flex-shrink-0 bg-[#151030] border border-white/10 rounded-xl flex items-center justify-center shadow-lg hover:border-[#915eff] hover:bg-[#1d1836] transition-all duration-300 cursor-pointer group" 
       key={technology.name + (isClone ? "-clone" : "")}
     >
-      {/* Teks warna gelap */}
-      <p className="text-gray-900 text-lg font-bold tracking-wider text-center">
+      {/* Teks dengan warna sekunder yang berubah jadi putih saat di-hover */}
+      <p className="text-[#aaa6c3] group-hover:text-white text-sm font-semibold tracking-wider text-center transition-colors">
         {technology.name}
       </p>
     </div>
   );
 
   return (
-    <section className="overflow-hidden py-6 flex flex-col gap-6" ref={marqueeRef}>
+    <section className="overflow-hidden py-6 flex flex-col gap-4" ref={marqueeRef}>
       
       <div className="flex marquee-track-left w-max">
         {topRow.map((technology) => renderBox(technology))}
