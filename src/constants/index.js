@@ -1,39 +1,14 @@
 
 import {
-  logo,
   networking,
   ui,
   qa,
   fullstack,
-  github,
-  link,
-  menu,
-  java,
-  close,
-  css,
   project2,
   project3,
   project4,
   project5,
-  mysql,
-  express,
-  aws,
-  mui,
-  
-  gsap,
-  framer,
-  figma,
-  git,
-  smaw,
-  html,
-  javascript,
-  mongodb,
-  nodejs,
-  reactjs,
-  redux,
-  tailwind,
-  threejs,
-} from '../assets'
+} from '../assets';
 
 
 import Puninar from "../assets/company/Puninar.png";
@@ -88,71 +63,22 @@ const services = [
 
 
 const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS",
-    icon: css,
-  },
-  {
-    name: "SMAW",
-    icon: smaw,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "gsap",
-    icon: gsap,
-  },
-  {
-    name: "java",
-    icon: java,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Material Ui",
-    icon: mui,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MySql",
-    icon: mysql,
-  },
-
-  {
-    name: "git",
-    icon: git,
-  },
- 
-
+  { name: "HTML 5" },
+  { name: "CSS" },
+  { name: "SMAW" },
+  { name: "JavaScript" },
+  { name: "React JS" },
+  { name: "gsap" },
+  { name: "java" },
+  { name: "Three JS" },
+  { name: "figma" },
+  { name: "Redux Toolkit" },
+  { name: "Tailwind CSS" },
+  { name: "Material Ui" },
+  { name: "Node JS" },
+  { name: "MySql" },
+  { name: "git" },
 ];
-
 const experiences = [
 {
   title: "IT Functional",
