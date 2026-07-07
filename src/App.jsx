@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import CustomCursor from "./components/CustomCursor"; 
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -85,12 +86,15 @@ const IndonesiaLayout = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<EnglishLayout />} />
-        <Route path="/id" element={<IndonesiaLayout />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <CustomCursor />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<EnglishLayout />} />
+          <Route path="/id" element={<IndonesiaLayout />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 
