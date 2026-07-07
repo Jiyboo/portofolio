@@ -26,7 +26,7 @@ const CustomCursor = () => {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-[#915eff] pointer-events-none z-[9999] shadow-[0_0_15px_rgba(145,94,255,0.6)] mix-blend-screen"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full bg-white pointer-events-none z-[9999] mix-blend-difference"
     ></div>
   );
 };
